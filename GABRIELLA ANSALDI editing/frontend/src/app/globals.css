@@ -1,0 +1,93 @@
+/* 1. L'import deve stare QUI, prima di tutto il resto */
+@import "leaflet/dist/leaflet.css";
+
+/* 2. Poi arrivano le direttive di Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 🔥 COMANDO FONDAMENTALE PER BLOCCARE LA DARK MODE */
+    color-scheme: light;
+
+    --background: #FFF8E6;
+    /* Avorio/Crema */
+    --foreground: #4B5749;
+    /* Verde Bosco/Olivo */
+    --selection-bg: #E9EFF4;
+    --selection-text: #4B5749;
+  }
+
+  html {
+    @apply scroll-smooth;
+    background-color: var(--background);
+    color: var(--foreground);
+
+    /* Font Scaling */
+    font-size: clamp(14px, 1.111vw, 20px);
+
+    scrollbar-gutter: stable;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply mx-auto max-w-[1920px] overflow-x-hidden min-h-screen flex flex-col;
+    /* Assicuriamo che il body erediti lo sfondo chiaro */
+    background-color: var(--background);
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 640px) {
+    html {
+      font-size: clamp(14px, 4.26vw, 18px);
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 1023px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  /* --- POLISH VISIVO --- */
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    /* gray-300 */
+    border-radius: 9999px;
+    /* rounded-full */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #9ca3af;
+    /* gray-400 */
+  }
+}
+
+/* Fine @layer base */
+
+@layer utilities {
+
+  /* Risograph Filter Effect */
+  /* Combines a slight sepia/contrast adjustment with a blend mode for a raw printed look */
+  .riso-filter {
+    filter: sepia(30%) contrast(110%) brightness(105%);
+    mix-blend-mode: multiply;
+  }
+}
