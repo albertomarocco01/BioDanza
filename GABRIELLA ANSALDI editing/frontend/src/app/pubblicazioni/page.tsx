@@ -47,9 +47,9 @@ export default function PubblicazioniPage() {
                     </p>
 
                     <div className="pt-8 flex flex-col sm:flex-row gap-6">
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-text-primary text-primary font-serif uppercase tracking-widest text-sm hover:bg-text-secondary transition-colors text-center w-full sm:w-auto inline-block">
-                            Acquista su Amazon
-                        </a>
+                        <a href="https://www.amazon.it/Meccanismi-azione-della-biodanza-illustrata/dp/8899065071/ref=sr_1_1?crid=1LMWVY0IYGZEH&dib=eyJ2IjoiMSJ9.oa6ejN7ZK--Q9MS-AOF4nA.E75eb4CPqbW_TOByVLvR09mOm0lNJxGAIq5rF0UMlfM&dib_tag=se&keywords=meccanismi+di+biodanza&qid=1773916742&sprefix=meccanismi+di+biodanza%2Caps%2C301&sr=8-1" target="_blank" rel="noopener noreferrer" className="px-8 py-4 bg-text-primary text-primary font-serif uppercase tracking-widest text-sm hover:bg-text-secondary transition-colors text-center w-full sm:w-auto inline-block">
+                             Acquista su Amazon
+                         </a>
                         <a href="#" className="px-8 py-4 border border-text-primary/20 font-serif uppercase tracking-widest text-sm hover:border-text-primary transition-colors text-center w-full sm:w-auto">
                             Leggi un estratto
                         </a>
