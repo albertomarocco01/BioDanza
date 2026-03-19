@@ -3,7 +3,7 @@ import { Average, Quintessential, Cormorant_Garamond } from "next/font/google";
 
 import "./globals.css";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
 
 // Configurazione Fonts
 const averageFont = Average({
@@ -55,10 +55,9 @@ export default function RootLayout({
     >
       <body className="antialiased bg-primary text-text-primary selection:bg-accent-biodanza/20 relative min-h-screen flex flex-col">
         <Header />
-        <main className="pt-20 flex-grow relative z-10">
+        <ConditionalLayout>
           {children}
-        </main>
-        <Footer />
+        </ConditionalLayout>
       </body>
     </html>
   );

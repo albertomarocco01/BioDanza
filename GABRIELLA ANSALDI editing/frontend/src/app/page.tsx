@@ -1,13 +1,14 @@
 "use client";
 
-// ─── CSS Scroll Snap + Liquid Transitions (V3) ───
-// • Scroll Snap Mandatory with smooth snapping between fullscreen sections.
-// • Liquid "Slide & Cross-fade" via whileInView on inner content wrappers.
-// • "Inizia il cammino" converted to button → scrolls to CTA section.
-// • Sections use 100dvh for mobile stability; overflow-hidden to fix reverse-scroll jitter.
+// ─── CSS Scroll Snap + Zen Dynamic Stability (V4) ───
+// • Universal use of 100dvh for absolute viewport stability.
+// • Footer integrated as a final, stable snap-end point.
+// • Liquid transitions refined (amount: 0.5) for precise trigger timing.
+// • Jitter fix: removed overflow-hidden on sections, added flex-shrink-0.
 
 import React, { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
+import Footer from "@/components/layout/Footer";
 
 // ─── LIQUID VARIANT: organic entrance for each section's inner content ───
 const liquidVariant = {
@@ -20,33 +21,36 @@ const liquidVariant = {
   },
 };
 
-// ─── Section height token (accounts for fixed Header h-20 = 5rem) ───
-const SECTION_H = "h-[calc(100dvh-5rem)] min-h-[calc(100dvh-5rem)]";
+// ─── Section height token (Dynamic Viewport Height for mobile stability) ───
+const SECTION_H = "h-[100dvh] min-h-[100dvh]";
 
 export default function Home() {
   // Ref to the scroll-snap host container
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  // Ref to the final CTA section for programmatic scroll
+  
+  // Ref to the final CTA section for anchor button navigation
   const ctaRef = useRef<HTMLElement>(null);
 
-  // ─── scrollToSection: smooth-scrolls within the snap container to the CTA ───
+  // ─── scrollToCTA: smooth-scrolls within the snap container to the CTA section ───
   const scrollToCTA = useCallback(() => {
-    ctaRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // block: 'end' ensures we land precisely at the CTA before the footer snap
+    ctaRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, []);
 
   return (
     // ─── PARENT CONTAINER: Scroll Snap Host ───
-    // scroll-smooth for eased native snapping; scroll-pt-0 since header is outside this container
+    // Using overflow-y-auto and h-[100dvh] for native stability and mobile chrome protection
     <div
       ref={scrollContainerRef}
-      className={`${SECTION_H} overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#FFF8E6] text-[#4B5749]`}
+      className="h-[100dvh] overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#FFF8E6] text-[#4B5749] overflow-x-hidden"
     >
 
       {/* ══════════════════════════════════════════
           SECTION 1 — HERO CON FIORE IN RILIEVO
           ══════════════════════════════════════════ */}
+      {/* pt-20 added to compensate for fixed header height (80px) */}
       <section
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 relative overflow-hidden`}
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 relative flex-shrink-0 pt-20`}
       >
 
         {/* 🌸 FIORE DI LOTO 🌸 — absolute, right-positioned, behind text */}
@@ -56,10 +60,10 @@ export default function Home() {
           initial={{ opacity: 0, rotate: 30, scale: 0.8 }}
           animate={{ opacity: 0.95, rotate: 15, scale: 0.9 }}
           transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
-          className="absolute top-[15%] md:top-[40%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-48 md:w-72 lg:w-88 drop-shadow-2xl pointer-events-none z-0"
+          className="absolute top-[20%] md:top-[45%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-48 md:w-72 lg:w-88 drop-shadow-2xl pointer-events-none z-0"
         />
 
-        {/* TESTI DELLA HERO — above flower (z-10), page-load animations retained */}
+        {/* TESTI DELLA HERO — above flower (z-10) */}
         <motion.span
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -87,7 +91,7 @@ export default function Home() {
           Sei in uno spazio protetto. Un luogo dove il tuo sentire viene ascoltato, accolto e mai giudicato.
         </motion.p>
 
-        {/* ─── "INIZIA IL CAMMINO" — converted to button → scrolls to CTA section ─── */}
+        {/* ─── "INIZIA IL CAMMINO" — anchor button to CTA ─── */}
         <motion.button
           onClick={scrollToCTA}
           initial={{ opacity: 0 }}
@@ -113,9 +117,8 @@ export default function Home() {
           SECTION 2 — DOMANDA CATALIZZATRICE 1
           ══════════════════════════════════════════ */}
       <section
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
-        {/* ─── Liquid entrance wrapper ─── */}
         <motion.div
           variants={liquidVariant}
           initial="hidden"
@@ -137,9 +140,8 @@ export default function Home() {
           SECTION 3 — DOMANDA CATALIZZATRICE 2
           ══════════════════════════════════════════ */}
       <section
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
-        {/* ─── Liquid entrance wrapper ─── */}
         <motion.div
           variants={liquidVariant}
           initial="hidden"
@@ -161,9 +163,8 @@ export default function Home() {
           SECTION 4 — DOMANDA CATALIZZATRICE 3
           ══════════════════════════════════════════ */}
       <section
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
-        {/* ─── Liquid entrance wrapper ─── */}
         <motion.div
           variants={liquidVariant}
           initial="hidden"
@@ -182,13 +183,12 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          SECTION 5 — CHIUSURA / CTA (scroll target)
+          SECTION 5 — CHIUSURA / CTA (Anchor Target)
           ══════════════════════════════════════════ */}
       <section
         ref={ctaRef}
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
-        {/* ─── Liquid entrance wrapper ─── */}
         <motion.div
           variants={liquidVariant}
           initial="hidden"
@@ -212,6 +212,14 @@ export default function Home() {
             Scopri i Percorsi
           </a>
         </motion.div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          FINAL SNAP POINT — FOOTER
+          ══════════════════════════════════════════ */}
+      {/* snap-end ensures the footer aligns perfectly at the bottom of the scroll journey */}
+      <section className="h-auto min-h-[40vh] snap-end relative z-10 flex-shrink-0">
+        <Footer />
       </section>
 
     </div>
