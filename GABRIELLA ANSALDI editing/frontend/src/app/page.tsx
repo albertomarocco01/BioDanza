@@ -40,12 +40,14 @@ export default function Home() {
     <div ref={containerRef} className="relative h-[500vh] w-full bg-[#FFF8E6] text-[#4B5749]">
 
       {/* Viewport fisso in cui si animano gli elementi */}
-      <div className="sticky top-20 flex h-[calc(100vh-80px)] w-full items-center justify-center overflow-hidden">
+      {/* FIX: overflow-hidden → overflow-x-hidden to stop clipping vertical text while preventing horizontal scroll */}
+      <div className="sticky top-20 flex h-[calc(100vh-80px)] w-full items-center justify-center overflow-x-hidden">
 
         {/* ─── HERO CON FIORE IN RILIEVO ─── */}
+        {/* FIX: added gap-6 for vertical spacing between text blocks; increased padding for breathing room */}
         <motion.div
           style={{ opacity: heroOpacity, scale: heroScale }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center"
+          className="absolute inset-0 flex flex-col gap-6 items-center justify-center px-6 py-12 md:px-12 md:py-16 text-center"
         >
           {/* 🌸 FIORE DI LOTO 🌸 */}
           {/* Spostato a destra (lg:right-[15%]), abbassato (top-[35%]) e ruotato di 15 gradi */}
@@ -64,7 +66,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="font-serif text-sm md:text-base uppercase tracking-[0.3em] opacity-60 mb-8"
+            className="font-serif text-sm md:text-base uppercase tracking-[0.3em] opacity-60"
           >
             Maria Gabriella Ansaldi &bull; Relazione d'Aiuto
           </motion.span>
@@ -73,7 +75,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-            className="font-cursive text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight italic max-w-5xl relative z-10"
+            className="font-cursive text-5xl md:text-7xl lg:text-8xl leading-tight italic max-w-5xl relative z-10"
           >
             "Forse questa volta ho bisogno di aiuto?"
           </motion.h1>
@@ -92,7 +94,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.7 }}
             transition={{ duration: 1.5, delay: 1.4 }}
-            className="mt-20 flex flex-col items-center"
+            className="mt-8 flex flex-col items-center"
           >
             <span className="font-serif text-[10px] uppercase tracking-[0.4em] mb-4">
               Inizia il cammino
@@ -108,64 +110,68 @@ export default function Home() {
         </motion.div>
 
         {/* ─── DOMANDA CATALIZZATRICE 1 ─── */}
+        {/* FIX: added gap-6 for vertical spacing between text blocks */}
         <motion.div
           style={{ opacity: q1Opacity, y: q1Y }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center"
+          className="absolute inset-0 flex flex-col gap-6 items-center justify-center px-6 py-12 md:px-12 md:py-16 text-center"
         >
           <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
             "Forse questa volta da solo non ce la faccio?"
           </p>
-          <div className="mt-12 w-16 h-[1px] bg-[#4B5749]/20" />
-          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl mt-8 leading-relaxed">
+          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
             A volte il peso che portiamo è troppo grande per le nostre sole spalle. Riconoscerlo non è debolezza: è il primo atto di coraggio verso il cambiamento.
           </p>
         </motion.div>
 
         {/* ─── DOMANDA CATALIZZATRICE 2 ─── */}
+        {/* FIX: added gap-6 for vertical spacing between text blocks */}
         <motion.div
           style={{ opacity: q2Opacity, y: q2Y }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center"
+          className="absolute inset-0 flex flex-col gap-6 items-center justify-center px-6 py-12 md:px-12 md:py-16 text-center"
         >
           <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
             "E se il mio corpo stesse cercando di dirmi qualcosa?"
           </p>
-          <div className="mt-12 w-16 h-[1px] bg-[#4B5749]/20" />
-          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl mt-8 leading-relaxed">
+          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
             Ogni sintomo, ogni tensione, ogni disagio è un messaggio d'amore dal profondo di noi stessi. Imparare ad ascoltarlo apre la porta a una comprensione più vasta.
           </p>
         </motion.div>
 
         {/* ─── DOMANDA CATALIZZATRICE 3 ─── */}
+        {/* FIX: added gap-6 for vertical spacing between text blocks */}
         <motion.div
           style={{ opacity: q3Opacity, y: q3Y }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center"
+          className="absolute inset-0 flex flex-col gap-6 items-center justify-center px-6 py-12 md:px-12 md:py-16 text-center"
         >
           <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
             "Posso ritrovare la gioia di essere vivo, pienamente?"
           </p>
-          <div className="mt-12 w-16 h-[1px] bg-[#4B5749]/20" />
-          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl mt-8 leading-relaxed">
+          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
             Il percorso dalla sofferenza alla fioritura passa attraverso il corpo, la mente e le emozioni. Non sei qui per sopravvivere, ma per riscoprire la tua luce.
           </p>
         </motion.div>
 
         {/* ─── CHIUSURA / CTA ─── */}
+        {/* FIX: added gap-6 for vertical spacing between text blocks */}
         <motion.div
           style={{ opacity: ctaOpacity, y: ctaY }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center"
+          className="absolute inset-0 flex flex-col gap-6 items-center justify-center px-6 py-12 md:px-12 md:py-16 text-center"
         >
-          <p className="font-cursive text-3xl md:text-5xl text-[#5E2F00] max-w-3xl leading-relaxed italic mb-8">
+          <p className="font-cursive text-3xl md:text-5xl text-[#5E2F00] max-w-3xl leading-relaxed italic">
             "Se senti che è arrivato il momento, io sono qui."
           </p>
-          <h2 className="font-serif text-4xl md:text-6xl mb-4">
+          <h2 className="font-serif text-4xl md:text-6xl">
             Maria Gabriella Ansaldi
           </h2>
-          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-2xl mt-4 leading-relaxed">
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-2xl leading-relaxed">
             Ti accompagno in un cammino di ascolto profondo e trasformazione, attraverso il lavoro di gruppo e le consulenze individuali.
           </p>
           <a
             href="/percorsi"
-            className="mt-12 px-10 py-4 border border-[#4B5749]/30 font-serif uppercase tracking-[0.2em] text-sm text-[#4B5749] hover:bg-[#4B5749] hover:text-[#FFF8E6] transition-all duration-300 rounded-full"
+            className="px-10 py-4 border border-[#4B5749]/30 font-serif uppercase tracking-[0.2em] text-sm text-[#4B5749] hover:bg-[#4B5749] hover:text-[#FFF8E6] transition-all duration-300 rounded-full"
           >
             Scopri i Percorsi
           </a>
