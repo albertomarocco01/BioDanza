@@ -1,21 +1,53 @@
 "use client";
 
-// ─── CSS Scroll Snap Mandatory: implemented fullscreen paged navigation ───
-// Each section (Hero, Q1, Q2, Q3, CTA) occupies 100vh and snaps on scroll.
-// Scroll-driven opacity/y animations removed; Hero retains page-load animations.
+// ─── CSS Scroll Snap + Liquid Transitions (V3) ───
+// • Scroll Snap Mandatory with smooth snapping between fullscreen sections.
+// • Liquid "Slide & Cross-fade" via whileInView on inner content wrappers.
+// • "Inizia il cammino" converted to button → scrolls to CTA section.
+// • Sections use 100dvh for mobile stability; overflow-hidden to fix reverse-scroll jitter.
 
-import React from "react";
+import React, { useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 
+// ─── LIQUID VARIANT: organic entrance for each section's inner content ───
+const liquidVariant = {
+  hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+// ─── Section height token (accounts for fixed Header h-20 = 5rem) ───
+const SECTION_H = "h-[calc(100dvh-5rem)] min-h-[calc(100dvh-5rem)]";
+
 export default function Home() {
+  // Ref to the scroll-snap host container
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  // Ref to the final CTA section for programmatic scroll
+  const ctaRef = useRef<HTMLElement>(null);
+
+  // ─── scrollToSection: smooth-scrolls within the snap container to the CTA ───
+  const scrollToCTA = useCallback(() => {
+    ctaRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
+
   return (
     // ─── PARENT CONTAINER: Scroll Snap Host ───
-    <div className="h-[calc(100vh-5rem)] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#FFF8E6] text-[#4B5749]">
+    // scroll-smooth for eased native snapping; scroll-pt-0 since header is outside this container
+    <div
+      ref={scrollContainerRef}
+      className={`${SECTION_H} overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#FFF8E6] text-[#4B5749]`}
+    >
 
       {/* ══════════════════════════════════════════
           SECTION 1 — HERO CON FIORE IN RILIEVO
           ══════════════════════════════════════════ */}
-      <section className="h-[calc(100vh-5rem)] min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 relative">
+      <section
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 relative overflow-hidden`}
+      >
 
         {/* 🌸 FIORE DI LOTO 🌸 — absolute, right-positioned, behind text */}
         <motion.img
@@ -27,7 +59,7 @@ export default function Home() {
           className="absolute top-[15%] md:top-[40%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-48 md:w-72 lg:w-88 drop-shadow-2xl pointer-events-none z-0"
         />
 
-        {/* TESTI DELLA HERO — above flower (z-10) */}
+        {/* TESTI DELLA HERO — above flower (z-10), page-load animations retained */}
         <motion.span
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,14 +87,16 @@ export default function Home() {
           Sei in uno spazio protetto. Un luogo dove il tuo sentire viene ascoltato, accolto e mai giudicato.
         </motion.p>
 
-        {/* INDICATORE DI SCROLL */}
-        <motion.div
+        {/* ─── "INIZIA IL CAMMINO" — converted to button → scrolls to CTA section ─── */}
+        <motion.button
+          onClick={scrollToCTA}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ duration: 1.5, delay: 1.4 }}
-          className="mt-8 flex flex-col items-center relative z-10"
+          className="mt-8 flex flex-col items-center relative z-10 cursor-pointer group bg-transparent border-none outline-none"
+          aria-label="Scorri verso il basso fino alla sezione finale"
         >
-          <span className="font-serif text-[10px] uppercase tracking-[0.4em] mb-4">
+          <span className="font-serif text-[10px] uppercase tracking-[0.4em] mb-4 group-hover:opacity-100 transition-opacity duration-300">
             Inizia il cammino
           </span>
           <div className="w-[1px] h-20 bg-[#4B5749]/20 relative overflow-hidden">
@@ -72,67 +106,112 @@ export default function Home() {
               transition={{ repeat: Infinity, duration: 2, ease: [0.45, 0, 0.55, 1] }}
             />
           </div>
-        </motion.div>
+        </motion.button>
       </section>
 
       {/* ══════════════════════════════════════════
           SECTION 2 — DOMANDA CATALIZZATRICE 1
           ══════════════════════════════════════════ */}
-      <section className="h-[calc(100vh-5rem)] min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 text-center">
-        <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
-          &quot;Forse questa volta da solo non ce la faccio?&quot;
-        </p>
-        <div className="w-16 h-[1px] bg-[#4B5749]/20" />
-        <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
-          A volte il peso che portiamo è troppo grande per le nostre sole spalle. Riconoscerlo non è debolezza: è il primo atto di coraggio verso il cambiamento.
-        </p>
+      <section
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+      >
+        {/* ─── Liquid entrance wrapper ─── */}
+        <motion.div
+          variants={liquidVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
+          className="flex flex-col items-center justify-center gap-6 text-center"
+        >
+          <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
+            &quot;Forse questa volta da solo non ce la faccio?&quot;
+          </p>
+          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
+            A volte il peso che portiamo è troppo grande per le nostre sole spalle. Riconoscerlo non è debolezza: è il primo atto di coraggio verso il cambiamento.
+          </p>
+        </motion.div>
       </section>
 
       {/* ══════════════════════════════════════════
           SECTION 3 — DOMANDA CATALIZZATRICE 2
           ══════════════════════════════════════════ */}
-      <section className="h-[calc(100vh-5rem)] min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 text-center">
-        <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
-          &quot;E se il mio corpo stesse cercando di dirmi qualcosa?&quot;
-        </p>
-        <div className="w-16 h-[1px] bg-[#4B5749]/20" />
-        <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
-          Ogni sintomo, ogni tensione, ogni disagio è un messaggio d&apos;amore dal profondo di noi stessi. Imparare ad ascoltarlo apre la porta a una comprensione più vasta.
-        </p>
+      <section
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+      >
+        {/* ─── Liquid entrance wrapper ─── */}
+        <motion.div
+          variants={liquidVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
+          className="flex flex-col items-center justify-center gap-6 text-center"
+        >
+          <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
+            &quot;E se il mio corpo stesse cercando di dirmi qualcosa?&quot;
+          </p>
+          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
+            Ogni sintomo, ogni tensione, ogni disagio è un messaggio d&apos;amore dal profondo di noi stessi. Imparare ad ascoltarlo apre la porta a una comprensione più vasta.
+          </p>
+        </motion.div>
       </section>
 
       {/* ══════════════════════════════════════════
           SECTION 4 — DOMANDA CATALIZZATRICE 3
           ══════════════════════════════════════════ */}
-      <section className="h-[calc(100vh-5rem)] min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 text-center">
-        <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
-          &quot;Posso ritrovare la gioia di essere vivo, pienamente?&quot;
-        </p>
-        <div className="w-16 h-[1px] bg-[#4B5749]/20" />
-        <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
-          Il percorso dalla sofferenza alla fioritura passa attraverso il corpo, la mente e le emozioni. Non sei qui per sopravvivere, ma per riscoprire la tua luce.
-        </p>
+      <section
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+      >
+        {/* ─── Liquid entrance wrapper ─── */}
+        <motion.div
+          variants={liquidVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
+          className="flex flex-col items-center justify-center gap-6 text-center"
+        >
+          <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
+            &quot;Posso ritrovare la gioia di essere vivo, pienamente?&quot;
+          </p>
+          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
+            Il percorso dalla sofferenza alla fioritura passa attraverso il corpo, la mente e le emozioni. Non sei qui per sopravvivere, ma per riscoprire la tua luce.
+          </p>
+        </motion.div>
       </section>
 
       {/* ══════════════════════════════════════════
-          SECTION 5 — CHIUSURA / CTA
+          SECTION 5 — CHIUSURA / CTA (scroll target)
           ══════════════════════════════════════════ */}
-      <section className="h-[calc(100vh-5rem)] min-h-[calc(100vh-5rem)] w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 text-center">
-        <p className="font-cursive text-3xl md:text-5xl text-[#5E2F00] max-w-3xl leading-relaxed italic">
-          &quot;Se senti che è arrivato il momento, io sono qui.&quot;
-        </p>
-        <h2 className="font-serif text-4xl md:text-6xl">
-          Maria Gabriella Ansaldi
-        </h2>
-        <p className="font-serif text-xl md:text-2xl opacity-80 max-w-2xl leading-relaxed">
-          Ti accompagno in un cammino di ascolto profondo e trasformazione, attraverso il lavoro di gruppo e le consulenze individuali.
-        </p>
-        <a
-          href="/percorsi"
-          className="px-10 py-4 border border-[#4B5749]/30 font-serif uppercase tracking-[0.2em] text-sm text-[#4B5749] hover:bg-[#4B5749] hover:text-[#FFF8E6] transition-all duration-300 rounded-full"
+      <section
+        ref={ctaRef}
+        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 overflow-hidden`}
+      >
+        {/* ─── Liquid entrance wrapper ─── */}
+        <motion.div
+          variants={liquidVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.5 }}
+          className="flex flex-col items-center justify-center gap-6 text-center"
         >
-          Scopri i Percorsi
-        </a>
+          <p className="font-cursive text-3xl md:text-5xl text-[#5E2F00] max-w-3xl leading-relaxed italic">
+            &quot;Se senti che è arrivato il momento, io sono qui.&quot;
+          </p>
+          <h2 className="font-serif text-4xl md:text-6xl">
+            Maria Gabriella Ansaldi
+          </h2>
+          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-2xl leading-relaxed">
+            Ti accompagno in un cammino di ascolto profondo e trasformazione, attraverso il lavoro di gruppo e le consulenze individuali.
+          </p>
+          <a
+            href="/percorsi"
+            className="px-10 py-4 border border-[#4B5749]/30 font-serif uppercase tracking-[0.2em] text-sm text-[#4B5749] hover:bg-[#4B5749] hover:text-[#FFF8E6] transition-all duration-300 rounded-full"
+          >
+            Scopri i Percorsi
+          </a>
+        </motion.div>
       </section>
 
     </div>
