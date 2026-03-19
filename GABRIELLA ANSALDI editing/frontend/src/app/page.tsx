@@ -56,7 +56,7 @@ export default function Home() {
             initial={{ opacity: 0, rotate: 30, scale: 0.8 }}
             animate={{ opacity: 0.95, rotate: 15, scale: 0.9 }}
             transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
-            className="absolute top-[30%] md:top-[35%] right-[-5%] md:right-[5%] lg:right-[15%] w-40 md:w-64 drop-shadow-2xl pointer-events-none z-20"
+            className="absolute top-[15%] md:top-[40%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-48 md:w-72 lg:w-88 drop-shadow-2xl pointer-events-none z-0"
           />
 
           {/* TESTI DELLA HERO */}
