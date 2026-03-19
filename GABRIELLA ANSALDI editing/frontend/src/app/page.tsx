@@ -7,17 +7,17 @@
 // • Jitter fix: removed overflow-hidden on sections, added flex-shrink-0.
 
 import React, { useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Footer from "@/components/layout/Footer";
 
 // ─── LIQUID VARIANT: organic entrance for each section's inner content ───
-const liquidVariant = {
+const liquidVariant: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1.4, ease: [0.22, 1, 0.36, 1] },
   },
 };
 

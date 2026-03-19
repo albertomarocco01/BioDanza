@@ -70,7 +70,7 @@ export default function BiodanzaPage() {
                         Ho raccolto anni di esperienza e amore per questa disciplina in una pubblicazione dedicata a chi vuole approfondire il sentiero della Biodanza.
                     </p>
                     <a
-                        href="#"
+                        href="https://www.amazon.it/Meccanismi-azione-della-biodanza-illustrata/dp/8899065071/ref=sr_1_1?crid=1LMWVY0IYGZEH&dib=eyJ2IjoiMSJ9.oa6ejN7ZK--Q9MS-AOF4nA.E75eb4CPqbW_TOByVLvR09mOm0lNJxGAIq5rF0UMlfM&dib_tag=se&keywords=meccanismi+di+biodanza&qid=1773916742&sprefix=meccanismi+di+biodanza%2Caps%2C301&sr=8-1"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block px-10 py-4 bg-accent-biodanza text-white font-serif uppercase tracking-[0.2em] text-sm hover:scale-105 transition-transform"

@@ -18,18 +18,20 @@ export default function ChiSonoPage() {
 
             <div className="grid md:grid-cols-[1fr_2fr] gap-16 items-start">
 
-                {/* Photo Placeholder */}
+                {/* Photo — ASSET INJECTED: gabriella.png */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
                     className="relative aspect-[3/4] w-full border border-text-primary/10 bg-white/50 p-2 shadow-sm rotate-[-2deg]"
                 >
-                    <div className="w-full h-full bg-primary-dark/30 flex items-center justify-center">
-                        <span className="font-serif text-xs px-4 text-center opacity-50 uppercase tracking-widest">
-                            Placeholder Foto Gabriella<br />(Stile Portfolio / Ritratto Naturale)
-                        </span>
-                    </div>
+                    <Image
+                        src="/gabriella.png"
+                        alt="Maria Gabriella Ansaldi — Ritratto"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                 </motion.div>
 
                 {/* Biography Text */}

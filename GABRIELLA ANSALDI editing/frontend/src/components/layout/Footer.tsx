@@ -1,14 +1,24 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
     return (
         <footer className="w-full bg-primary-dark/30 border-t border-text-primary/10 mt-32 py-16 px-8 relative z-20">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
 
-                {/* Brand / Logo */}
+                {/* Brand / Logo — ASSET INJECTED: logo-placeholder.png */}
                 <div className="space-y-4 flex flex-col items-center md:items-start">
                     <Link href="/" className="inline-block group">
+                        <Image
+                            src="/logo.png"
+                            alt="Maria Gabriella Ansaldi Logo"
+                            width={160}
+                            height={64}
+                            className="h-16 w-auto object-contain"
+                        />
+                    </Link>
+                    <Link href="/" className="inline-block group mt-2">
                         <span className="font-display text-3xl tracking-wider block">Maria Gabriella Ansaldi</span>
                         <span className="font-serif text-[10px] uppercase tracking-[0.2em] opacity-60">Metodo • Cuore • Anima</span>
                     </Link>

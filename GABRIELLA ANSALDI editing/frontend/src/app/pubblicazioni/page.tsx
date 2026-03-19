@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function PubblicazioniPage() {
     return (
@@ -17,18 +18,20 @@ export default function PubblicazioniPage() {
 
             <div className="bg-primary-dark/20 border border-text-primary/10 p-8 md:p-16 flex flex-col md:flex-row gap-16 items-center">
 
-                {/* Book Cover Placeholder */}
+                {/* Book Cover — ASSET INJECTED: libro2.jpeg */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
                     whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="w-full max-w-[300px] aspect-[2/3] bg-primary-dark/80 shadow-2xl relative flex flex-col items-center justify-center p-6 border-l-8 border-accent-biodanza/50"
+                    className="w-full max-w-[300px] aspect-[2/3] relative shadow-2xl"
                 >
-                    <div className="absolute inset-0 bg-primary-dark/10" />
-                    <span className="font-serif text-xs uppercase tracking-widest opacity-60 absolute top-8">Libro in Uscita</span>
-                    <h2 className="font-display text-3xl text-center text-text-primary z-10">[Titolo del Libro]</h2>
-                    <span className="font-cursive italic mt-4 z-10 text-center opacity-80">"Sottotitolo o citazione emozionale"</span>
-                    <span className="font-serif text-xs uppercase tracking-widest opacity-60 absolute bottom-8">Maria Gabriella Ansaldi</span>
+                    <Image
+                        src="/libro2.jpeg"
+                        alt="Meccanismi di azione della Biodanza — libro di Maria Gabriella Ansaldi"
+                        fill
+                        className="object-contain"
+                        sizes="300px"
+                    />
                 </motion.div>
 
                 {/* Book Info */}
