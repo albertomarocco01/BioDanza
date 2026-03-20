@@ -4,8 +4,8 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className="w-full bg-primary-dark/30 border-t border-text-primary/10 mt-32 py-16 px-8 relative z-20">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+        <footer className="w-full bg-primary-dark/30 border-t border-text-primary/10 py-10 px-8 ...">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 ...">
 
                 {/* Brand / Logo — ASSET INJECTED: logo.png */}
                 <div className="space-y-4 flex flex-col items-center md:items-start">
@@ -57,7 +57,7 @@ export default function Footer() {
 
             </div>
 
-            <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-text-primary/10 flex flex-col md:flex-row justify-between items-center text-xs font-serif opacity-50">
+            <div className="max-w-7xl mx-auto8 pt-6 border-t border-text-primary/10 flex flex-col md:flex-row justify-between items-center text-xs font-serif opacity-50">
                 <p>&copy; {new Date().getFullYear()} Maria Gabriella Ansaldi. Tutti i diritti riservati.</p>
                 <div className="space-x-4 mt-4 md:mt-0">
                     <Link href="#" className="hover:underline">Privacy Policy</Link>

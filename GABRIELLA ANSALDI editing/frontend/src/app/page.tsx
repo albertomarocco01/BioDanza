@@ -218,10 +218,9 @@ export default function Home() {
           FINAL SNAP POINT — FOOTER
           ══════════════════════════════════════════ */}
       {/* snap-end ensures the footer aligns perfectly at the bottom of the scroll journey */}
-      <section className="h-auto min-h-[40vh] snap-end relative z-10 flex-shrink-0">
-        <Footer />
-      </section>
-
+<section className="h-auto snap-end relative z-10 flex-shrink-0">
+  <Footer />
+</section>
     </div>
   );
 }
