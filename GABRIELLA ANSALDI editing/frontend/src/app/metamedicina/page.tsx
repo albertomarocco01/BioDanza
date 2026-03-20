@@ -67,54 +67,35 @@ export default function MetamedicinaPage() {
                     {/* NOT clickable — purely visual anchors      */}
                     {/* ========================================== */}
                     {[
-                        {
-                            title: "Mente",
-                            desc: "Identificare le credenze limitanti.",
-                            /* SVG 1: Brain — Detailed cerebral outline with sulci and neural nodes */
-                            svg: (
-                                <svg
-                                    viewBox="0 0 80 80"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    stroke="#4B5749"
-                                    strokeWidth="1.2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="w-20 h-20"
-                                    aria-label="Simbolo Mente (Cervello)"
-                                >
-                                    {/* Left hemisphere outer contour */}
-                                    <path d="M40,64 C40,64 36,62 30,58 C22,52 14,44 14,34 C14,28 16,22 20,18 C24,14 30,12 36,12 C38,12 39,12 40,13" />
-                                    {/* Right hemisphere outer contour */}
-                                    <path d="M40,64 C40,64 44,62 50,58 C58,52 66,44 66,34 C66,28 64,22 60,18 C56,14 50,12 44,12 C42,12 41,12 40,13" />
-                                    {/* Left sulci / folds */}
-                                    <path d="M22,28 C26,24 34,22 38,26" opacity="0.6" />
-                                    <path d="M18,38 C24,34 32,33 38,36" opacity="0.5" />
-                                    <path d="M24,48 C28,44 34,43 38,46" opacity="0.4" />
-                                    {/* Right sulci / folds */}
-                                    <path d="M58,28 C54,24 46,22 42,26" opacity="0.6" />
-                                    <path d="M62,38 C56,34 48,33 42,36" opacity="0.5" />
-                                    <path d="M56,48 C52,44 46,43 42,46" opacity="0.4" />
-                                    {/* Central fissure */}
-                                    <line x1="40" y1="13" x2="40" y2="64" strokeDasharray="2 3" opacity="0.35" />
-                                    {/* Neural connection nodes */}
-                                    <circle cx="28" cy="30" r="1.5" fill="#4B5749" stroke="none" />
-                                    <circle cx="52" cy="30" r="1.5" fill="#4B5749" stroke="none" />
-                                    <circle cx="32" cy="42" r="1.2" fill="#4B5749" stroke="none" />
-                                    <circle cx="48" cy="42" r="1.2" fill="#4B5749" stroke="none" />
-                                    <circle cx="40" cy="24" r="1" fill="#4B5749" stroke="none" />
-                                    {/* Synaptic arcs */}
-                                    <path d="M28,30 Q40,22 52,30" opacity="0.25" strokeWidth="0.8" />
-                                    <path d="M32,42 Q40,36 48,42" opacity="0.25" strokeWidth="0.8" />
-                                    {/* Brain stem */}
-                                    <path d="M38,64 Q40,70 42,64" opacity="0.5" />
-                                </svg>
-                            ),
-                        },
+                       {
+    title: "Mente",
+    desc: "Identificare le credenze limitanti.",
+    /* SVG: Mente — Phosphor Brain Outline adapted to Brand Style */
+    svg: (
+        <svg
+            viewBox="0 0 256 256"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="#4B5749"
+            strokeWidth="4.5" // Spessore calibrato per il viewBox 256 per matchare l'1.2 del Cuore
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="w-20 h-20"
+            aria-label="Simbolo Mente (Cervello)"
+        >
+            {/* Struttura cerebrale */}
+            <circle cx="128" cy="72" r="16" />
+            <circle cx="144" cy="136" r="16" />
+            <path d="M120,216H72a8,8,0,0,1-8-8V171.81L36.42,159.18a8,8,0,0,1-3.77-10.3L56,104a80,80,0,1,1,128,64l8,64" />
+            <line x1="128" y1="56" x2="128" y2="24.39" />
+            <polyline points="214.38 88 184 88 154.24 123.71" />
+        </svg>
+    ),
+},
                         {
                             title: "Corpo",
                             desc: "Ascoltare i sintomi come alleati.",
-                            /* SVG 2: Body — Minimalist somatic silhouette with energy meridian */
+                            /* SVG 2: Corpo — Elegant human figure in meditative Lotus pose */
                             svg: (
                                 <svg
                                     viewBox="0 0 80 80"
@@ -125,35 +106,17 @@ export default function MetamedicinaPage() {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className="w-20 h-20"
-                                    aria-label="Simbolo Corpo (Figura Umana)"
+                                    aria-label="Simbolo Corpo (Meditazione)"
                                 >
-                                    {/* Head */}
-                                    <circle cx="40" cy="14" r="6" />
-                                    {/* Neck */}
-                                    <line x1="40" y1="20" x2="40" y2="24" />
-                                    {/* Torso outline — left */}
-                                    <path d="M40,24 C36,24 30,26 28,30 C26,34 26,42 28,48 L34,48" />
-                                    {/* Torso outline — right */}
-                                    <path d="M40,24 C44,24 50,26 52,30 C54,34 54,42 52,48 L46,48" />
-                                    {/* Waist connection */}
-                                    <path d="M34,48 Q40,50 46,48" />
-                                    {/* Left arm */}
-                                    <path d="M28,30 C24,32 18,36 16,40" />
-                                    <circle cx="15" cy="41" r="1.2" fill="#4B5749" stroke="none" />
-                                    {/* Right arm */}
-                                    <path d="M52,30 C56,32 62,36 64,40" />
-                                    <circle cx="65" cy="41" r="1.2" fill="#4B5749" stroke="none" />
-                                    {/* Left leg */}
-                                    <path d="M36,48 C34,54 32,62 30,70" />
-                                    {/* Right leg */}
-                                    <path d="M44,48 C46,54 48,62 50,70" />
-                                    {/* Central energy meridian (chakra line) */}
-                                    <line x1="40" y1="24" x2="40" y2="48" strokeDasharray="1.5 3" opacity="0.3" />
-                                    {/* Energy nodes along spine */}
-                                    <circle cx="40" cy="28" r="1" fill="#4B5749" stroke="none" opacity="0.5" />
-                                    <circle cx="40" cy="34" r="1" fill="#4B5749" stroke="none" opacity="0.5" />
-                                    <circle cx="40" cy="40" r="1" fill="#4B5749" stroke="none" opacity="0.5" />
-                                    <circle cx="40" cy="46" r="1" fill="#4B5749" stroke="none" opacity="0.5" />
+                                    {/* Head centered near the top */}
+                                    <circle cx="40" cy="18" r="5" />
+                                    {/* Spine curving gently downwards */}
+                                    <path d="M 40 23 Q 42 40 40 55" />
+                                    {/* Arms as graceful arcs resting on knees */}
+                                    <path d="M 40 30 Q 25 40 20 52" />
+                                    <path d="M 40 30 Q 55 40 60 52" />
+                                    {/* Crossed legs in a smooth infinity-like curve */}
+                                    <path d="M 20 52 Q 40 65 60 52 Q 50 60 40 55 Q 30 60 20 52" />
                                 </svg>
                             ),
                         },
