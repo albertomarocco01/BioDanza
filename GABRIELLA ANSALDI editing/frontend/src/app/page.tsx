@@ -1,16 +1,16 @@
 "use client";
 
-// ─── CSS Scroll Snap + Zen Dynamic Stability (V4) ───
-// • Universal use of 100dvh for absolute viewport stability.
-// • Footer integrated as a final, stable snap-end point.
-// • Liquid transitions refined (amount: 0.5) for precise trigger timing.
-// • Jitter fix: removed overflow-hidden on sections, added flex-shrink-0.
+// ─── CSS Scroll Snap + Zen Dynamic Stability (V5) ───
+// • PetalRain component added — canvas-based falling petals
+// • Burst triggered on every snap section change
+// • "Inizia il cammino" button moved lower (mt-16)
 
 import React, { useRef, useCallback } from "react";
 import { motion, Variants } from "framer-motion";
 import Footer from "@/components/layout/Footer";
+import PetalRain from "@/components/ui/PetalRain";
 
-// ─── LIQUID VARIANT: organic entrance for each section's inner content ───
+// ─── LIQUID VARIANT ───
 const liquidVariant: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(4px)" },
   visible: {
@@ -21,39 +21,31 @@ const liquidVariant: Variants = {
   },
 };
 
-// ─── Section height token (Dynamic Viewport Height for mobile stability) ───
 const SECTION_H = "h-[100dvh] min-h-[100dvh]";
 
 export default function Home() {
-  // Ref to the scroll-snap host container
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  
-  // Ref to the final CTA section for anchor button navigation
   const ctaRef = useRef<HTMLElement>(null);
 
-  // ─── scrollToCTA: smooth-scrolls within the snap container to the CTA section ───
   const scrollToCTA = useCallback(() => {
-    // block: 'end' ensures we land precisely at the CTA before the footer snap
     ctaRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, []);
 
   return (
-    // ─── PARENT CONTAINER: Scroll Snap Host ───
-    // Using overflow-y-auto and h-[100dvh] for native stability and mobile chrome protection
     <div
       ref={scrollContainerRef}
       className="h-[100dvh] overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#FFF8E6] text-[#4B5749] overflow-x-hidden"
     >
+      {/* ─── PETAL RAIN — fixed canvas layer, listens to scroll container ─── */}
+      <PetalRain scrollContainer={scrollContainerRef} />
 
       {/* ══════════════════════════════════════════
-          SECTION 1 — HERO CON FIORE IN RILIEVO
+          SECTION 1 — HERO
           ══════════════════════════════════════════ */}
-      {/* pt-20 added to compensate for fixed header height (80px) */}
       <section
         className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 gap-6 relative flex-shrink-0 pt-20`}
       >
-
-        {/* 🌸 FIORE DI LOTO 🌸 — absolute, right-positioned, behind text */}
+        {/* 🌸 FIORE DI LOTO */}
         <motion.img
           src="/fiore-loto.png"
           alt="Fiore di Loto delicato"
@@ -63,7 +55,6 @@ export default function Home() {
           className="absolute top-[20%] md:top-[45%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-48 md:w-72 lg:w-88 drop-shadow-2xl pointer-events-none z-0"
         />
 
-        {/* TESTI DELLA HERO — above flower (z-10) */}
         <motion.span
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -91,13 +82,13 @@ export default function Home() {
           Sei in uno spazio protetto. Un luogo dove il tuo sentire viene ascoltato, accolto e mai giudicato.
         </motion.p>
 
-        {/* ─── "INIZIA IL CAMMINO" — anchor button to CTA ─── */}
+        {/* ─── "INIZIA IL CAMMINO" — spostato più in basso con mt-16 ─── */}
         <motion.button
           onClick={scrollToCTA}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ duration: 1.5, delay: 1.4 }}
-          className="mt-8 flex flex-col items-center relative z-10 cursor-pointer group bg-transparent border-none outline-none"
+          className="mt-16 flex flex-col items-center relative z-10 cursor-pointer group bg-transparent border-none outline-none"
           aria-label="Scorri verso il basso fino alla sezione finale"
         >
           <span className="font-serif text-[10px] uppercase tracking-[0.4em] mb-4 group-hover:opacity-100 transition-opacity duration-300">
@@ -183,11 +174,11 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          SECTION 5 — CHIUSURA / CTA (Anchor Target)
+          SECTION 5 — CHIUSURA / CTA
           ══════════════════════════════════════════ */}
       <section
         ref={ctaRef}
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
+        className={`${SECTION_H} w-full flex flex-col items-center justify-end snap-start px-6 md:px-12 relative flex-shrink-0 pb-24`}
       >
         <motion.div
           variants={liquidVariant}
@@ -217,10 +208,10 @@ export default function Home() {
       {/* ══════════════════════════════════════════
           FINAL SNAP POINT — FOOTER
           ══════════════════════════════════════════ */}
-      {/* snap-end ensures the footer aligns perfectly at the bottom of the scroll journey */}
-<section className="h-auto snap-end relative z-10 flex-shrink-0">
-  <Footer />
-</section>
+      <section className="h-auto snap-end relative z-10 flex-shrink-0">
+        <Footer />
+      </section>
+
     </div>
   );
 }
