@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -49,13 +50,19 @@ export default function Header() {
 
     return (
         <header className="fixed top-0 left-0 w-full z-[100] bg-primary/60 backdrop-blur-md border-b border-text-primary/10 transition-all duration-300">
-            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                {/* LOGO Placeholder */}
+            <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+                {/* LOGO — ASSET INJECTED: logo.png */}
                 <Link href="/" className="flex items-center group">
-                    <div className="w-12 h-12 border-2 border-text-primary flex items-center justify-center rounded-sm group-hover:bg-text-primary group-hover:text-primary transition-all duration-300">
-                        <span className="font-display text-sm font-bold">LOGO</span>
+                    <div className="relative w-16 h-16 mr-4 transition-transform duration-300 group-hover:scale-105">
+                        <Image
+                            src="/logo.png"
+                            alt="Maria Gabriella Ansaldi Logo"
+                            fill
+                            className="object-contain"
+                            priority
+                        />
                     </div>
-                    <div className="ml-4 flex flex-col">
+                    <div className="flex flex-col">
                         <span className="font-display text-xl leading-none tracking-wider">Maria Gabriella Ansaldi</span>
                         <span className="font-serif text-[10px] uppercase tracking-[0.2em] opacity-80 mt-1 pl-1">Metodo • Cuore • Anima</span>
                     </div>

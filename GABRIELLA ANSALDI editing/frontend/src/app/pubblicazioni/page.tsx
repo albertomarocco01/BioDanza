@@ -18,7 +18,7 @@ export default function PubblicazioniPage() {
 
             <div className="bg-primary-dark/20 border border-text-primary/10 p-8 md:p-16 flex flex-col md:flex-row gap-16 items-center">
 
-                {/* Book Cover — ASSET INJECTED: libro2.jpeg */}
+                {/* Book Cover — ASSET INJECTED: libroritagliato.png */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, rotate: -3 }}
                     whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -26,7 +26,7 @@ export default function PubblicazioniPage() {
                     className="w-full max-w-[300px] aspect-[2/3] relative shadow-2xl"
                 >
                     <Image
-                        src="/libro2.jpeg"
+                        src="/libroritagliato.png"
                         alt="Meccanismi di azione della Biodanza — libro di Maria Gabriella Ansaldi"
                         fill
                         className="object-contain"

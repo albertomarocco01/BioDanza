@@ -7,7 +7,7 @@ export default function Footer() {
         <footer className="w-full bg-primary-dark/30 border-t border-text-primary/10 mt-32 py-16 px-8 relative z-20">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
 
-                {/* Brand / Logo — ASSET INJECTED: logo-placeholder.png */}
+                {/* Brand / Logo — ASSET INJECTED: logo.png */}
                 <div className="space-y-4 flex flex-col items-center md:items-start">
                     <Link href="/" className="inline-block group">
                         <Image
