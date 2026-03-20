@@ -2,13 +2,12 @@
 
 import React, { useEffect, useRef, useCallback } from "react";
 
-// ─── PETAL SHAPES — 5 organic SVG variants ───
 const PETAL_PATHS = [
-  "M10,0 C12,8 13,18 10,32 C7,18 8,8 10,0 Z",
-  "M10,0 C13,6 15,16 10,32 C5,16 7,6 10,0 Z",
-  "M10,0 C14,7 14,17 9,32 C6,17 7,7 10,0 Z",
-  "M10,0 C12,9 12,20 10,32 C8,20 8,9 10,0 Z",
-  "M10,0 C15,6 13,18 8,32 C6,18 6,6 10,0 Z",
+  "M10,0 C15,5 18,18 13,36 C11,40 9,40 7,36 C3,18 5,5 10,0 Z",
+  "M10,0 C16,4 19,17 13,37 C11,41 8,40 6,36 C2,17 4,4 10,0 Z",
+  "M10,0 C14,6 18,19 12,37 C10,41 7,40 5,36 C1,17 5,6 10,0 Z",
+  "M10,0 C16,4 19,18 11,37 C9,41 6,39 4,35 C1,17 4,4 10,0 Z",
+  "M10,0 C15,3 20,16 13,38 C11,42 8,41 6,37 C2,16 5,4 10,0 Z",
 ];
 
 interface Petal {
@@ -50,8 +49,8 @@ function createPetal(isBurst = false): Petal {
   };
 }
 
-const CONTINUOUS_COUNT = 14; // petali sempre in circolazione
-const BURST_COUNT = 11;      // petali extra 
+const CONTINUOUS_COUNT = 15; // PETALI SEMPRE ATTIVI
+const BURST_COUNT = 13;      // PETALI AL BURST
 
 export default function PetalRain({ scrollContainer }: { scrollContainer: React.RefObject<HTMLDivElement | null> }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
