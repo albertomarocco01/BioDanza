@@ -60,101 +60,73 @@ export default function MetamedicinaPage() {
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-12 pb-24">
-                    {/* ========================================== */}
-                    {/* LINE-ART SVG ICONS — Brain, Body, Heart    */}
-                    {/* Style: thin strokes, no fills, elegant     */}
-                    {/* Wrapped in motion.div for hover effects    */}
-                    {/* NOT clickable — purely visual anchors      */}
-                    {/* ========================================== */}
                     {[
-                       {
-    title: "Mente",
-    desc: "Identificare le credenze limitanti.",
-    /* SVG: Mente — Phosphor Brain Outline adapted to Brand Style */
-    svg: (
-        <svg
-            viewBox="0 0 256 256"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            stroke="#4B5749"
-            strokeWidth="4.5" // Spessore calibrato per il viewBox 256 per matchare l'1.2 del Cuore
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-20 h-20"
-            aria-label="Simbolo Mente (Cervello)"
-        >
-            {/* Struttura cerebrale */}
-            <circle cx="128" cy="72" r="16" />
-            <circle cx="144" cy="136" r="16" />
-            <path d="M120,216H72a8,8,0,0,1-8-8V171.81L36.42,159.18a8,8,0,0,1-3.77-10.3L56,104a80,80,0,1,1,128,64l8,64" />
-            <line x1="128" y1="56" x2="128" y2="24.39" />
-            <polyline points="214.38 88 184 88 154.24 123.71" />
-        </svg>
-    ),
-},
                         {
-                            title: "Corpo",
-                            desc: "Ascoltare i sintomi come alleati.",
-                            /* SVG 2: Corpo — Elegant human figure in meditative Lotus pose */
+                            title: "Mente",
+                            desc: "Identificare le credenze limitanti.",
                             svg: (
                                 <svg
-                                    viewBox="0 0 80 80"
+                                    viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     stroke="#4B5749"
-                                    strokeWidth="1.2"
+                                    strokeWidth="1.5"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className="w-20 h-20"
-                                    aria-label="Simbolo Corpo (Meditazione)"
+                                    aria-label="Simbolo Mente (Cervello)"
                                 >
-                                    {/* Head centered near the top */}
-                                    <circle cx="40" cy="18" r="5" />
-                                    {/* Spine curving gently downwards */}
-                                    <path d="M 40 23 Q 42 40 40 55" />
-                                    {/* Arms as graceful arcs resting on knees */}
-                                    <path d="M 40 30 Q 25 40 20 52" />
-                                    <path d="M 40 30 Q 55 40 60 52" />
-                                    {/* Crossed legs in a smooth infinity-like curve */}
-                                    <path d="M 20 52 Q 40 65 60 52 Q 50 60 40 55 Q 30 60 20 52" />
+                                    <circle cx="12" cy="6.5" r="1.5" />
+                                    <circle cx="13.5" cy="12.5" r="1.5" />
+                                    <path d="M11.25 20.25H6.75a.75.75 0 0 1-.75-.75v-4.07l-2.4-1.18a.75.75 0 0 1-.35-.97L5.25 9.75a7.5 7.5 0 1 1 12 6l.75 6" />
+                                    <line x1="12" y1="5" x2="12" y2="2.3" />
+                                    <polyline points="20.1 8.25 17.25 8.25 14.46 11.6" />
+                                </svg>
+                            ),
+                        },
+                        {
+                            title: "Corpo",
+                            desc: "Ascoltare i sintomi come alleati.",
+                            svg: (
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    stroke="#4B5749"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    className="w-20 h-20"
+                                    aria-label="Simbolo Corpo"
+                                >
+                                    <path d="M14.5714 15.0036L15.4286 16.8486C15.4286 16.8486 19.2857 17.6678 19.2857 19.6162C19.2857 21 17.5714 21 17.5714 21H13L10.75 19.75" />
+                                    <path d="M9.42864 15.0036L8.5715 16.8486C8.5715 16.8486 4.71436 17.6678 4.71436 19.6162C4.71436 21 6.42864 21 6.42864 21H8.50007L10.7501 19.75L13.5001 18" />
+                                    <path d="M3 15.9261C3 15.9261 5.14286 15.4649 6.42857 15.0036C7.71429 8.54595 11.5714 9.00721 12 9.00721C12.4286 9.00721 16.2857 8.54595 17.5714 15.0036C18.8571 15.4649 21 15.9261 21 15.9261" />
+                                    <path d="M12 7C13.1046 7 14 6.10457 14 5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5C10 6.10457 10.8954 7 12 7Z" />
                                 </svg>
                             ),
                         },
                         {
                             title: "Emozione",
                             desc: "Liberare il dolore del passato.",
-                            /* SVG 3: Heart — Anatomical-symbolic heart with pulse wave */
                             svg: (
                                 <svg
-                                    viewBox="0 0 80 80"
-                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
                                     fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
                                     stroke="#4B5749"
-                                    strokeWidth="1.2"
+                                    strokeWidth="1.5"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     className="w-20 h-20"
                                     aria-label="Simbolo Emozione (Cuore)"
                                 >
-                                    {/* Heart outer contour */}
-                                    <path d="M40,66 C40,66 10,50 10,30 C10,22 16,14 26,14 C30,14 34,16 37,19 C38,20 39,21 40,22 C41,21 42,20 43,19 C46,16 50,14 54,14 C64,14 70,22 70,30 C70,50 40,66 40,66 Z" />
-                                    {/* Inner heart detail — aorta suggestion */}
-                                    <path d="M36,22 C34,18 30,16 26,16" opacity="0.4" strokeWidth="0.8" />
-                                    <path d="M44,22 C46,18 50,16 54,16" opacity="0.4" strokeWidth="0.8" />
-                                    {/* Pulse / heartbeat wave through center */}
-                                    <polyline points="22,38 30,38 34,28 38,46 42,32 46,42 50,38 58,38" strokeWidth="1" opacity="0.5" />
-                                    {/* Subtle radiating ripples */}
-                                    <path d="M40,10 L40,6" opacity="0.2" strokeWidth="0.8" />
-                                    <path d="M28,12 L24,8" opacity="0.2" strokeWidth="0.8" />
-                                    <path d="M52,12 L56,8" opacity="0.2" strokeWidth="0.8" />
-                                    {/* Inner warmth glow — concentric arc */}
-                                    <path d="M30,36 Q40,28 50,36" opacity="0.15" strokeWidth="0.8" />
-                                    <path d="M28,42 Q40,32 52,42" opacity="0.1" strokeWidth="0.8" />
+                                    <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+                                    <path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
                                 </svg>
                             ),
                         },
                     ].map((item, i) => (
-                        /* Each icon wrapped in motion.div for hover effect — NOT clickable */
                         <div key={i} className="text-center space-y-5 flex flex-col items-center">
                             <motion.div
                                 whileHover={{ scale: 1.08 }}
