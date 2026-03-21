@@ -16,7 +16,7 @@ const navigation = [
 
 const percorsiDropdown = [
     { name: "Biodanza", href: "/biodanza" },
-    { name: "Consulenze Individuali", href: "/metamedicina" },
+    { name: "Metamedicina", href: "/metamedicina" },
 ];
 
 export default function Header() {
@@ -49,11 +49,18 @@ export default function Header() {
         };
     }, []);
 
+    const handleBrandClick = (e: React.MouseEvent) => {
+        if (pathname === "/") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
     return (
         <header className="fixed top-0 left-0 w-full z-[100] bg-primary/60 backdrop-blur-md border-b border-text-primary/10 transition-all duration-300">
             <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
                 {/* LOGO — ASSET INJECTED: logo.png */}
-                <Link href="/" className="flex items-center group">
+                <Link href="/" onClick={handleBrandClick} className="flex items-center group">
                     <div className="relative w-16 h-16 mr-4 transition-transform duration-300 group-hover:scale-105">
                         <Image
                             src="/logo.png"

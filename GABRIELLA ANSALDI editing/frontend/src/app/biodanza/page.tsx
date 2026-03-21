@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import BluePetalRain from "@/components/ui/BluePetalRain";
 
 export default function BiodanzaPage() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -15,6 +16,9 @@ export default function BiodanzaPage() {
 
     return (
         <div ref={containerRef} className="relative min-h-[200vh]">
+
+            {/* ─── PIOGGIA PETALI BLU ─── */}
+            <BluePetalRain />
 
             {/* Hero Section */}
             <section className="h-screen flex flex-col items-center justify-center p-8 text-center relative z-10">
@@ -39,12 +43,12 @@ export default function BiodanzaPage() {
             {/* Content Section */}
             <section className="max-w-4xl mx-auto px-8 py-24 relative z-10 space-y-32">
                 <div className="space-y-8">
-                    <h2 className="font-serif text-3xl md:text-5xl text-text-primary">Cos'è la Biodanza?</h2>
+                    <h2 className="font-serif text-3xl md:text-5xl text-text-primary">Cos&apos;è la Biodanza?</h2>
                     <p className="font-serif text-lg md:text-xl leading-relaxed text-text-primary/90">
                         La Biodanza è un sistema di accelerazione dei processi integrativi a livello cellulare, metabolico, neuroendocrino, immunologico ed esistenziale, mediante "vivencias" indotte dalla musica, dal canto, dal movimento e da situazioni di incontro in gruppo.
                     </p>
                     <p className="font-serif text-lg md:text-xl leading-relaxed text-text-primary/90">
-                        Fondata da Rolando Toro Araneda, questa disciplina ci invita a riscoprire la gioia di vivere e la sacralità dell'incontro umano.
+                        Fondata da Rolando Toro Araneda, questa disciplina ci invita a riscoprire la gioia di vivere e la sacralità dell&apos;incontro umano.
                     </p>
                 </div>
 

@@ -1,28 +1,41 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+    const pathname = usePathname();
+
+    const handleBrandClick = (e: React.MouseEvent) => {
+        if (pathname === "/") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    };
+
     return (
-        <footer className="w-full bg-primary-dark/30 border-t border-text-primary/10 py-10 px-8 ...">
-    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 ...">
+        <footer className="w-full bg-primary-dark/30 border-t border-text-primary/10 py-10 px-8 mt-auto">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-text-primary">
 
                 {/* Brand / Logo — ASSET INJECTED: logo.png */}
                 <div className="space-y-4 flex flex-col items-center md:items-start">
-                    <Link href="/" className="inline-block group">
-                        <Image
-                            src="/logo.png"
-                            alt="Maria Gabriella Ansaldi Logo"
-                            width={160}
-                            height={64}
-                            className="h-16 w-auto object-contain"
-                        />
+                    <Link href="/" onClick={handleBrandClick} className="inline-block group">
+                        <div className="flex flex-col items-center md:items-start">
+                            <Image
+                                src="/logo.png"
+                                alt="Maria Gabriella Ansaldi Logo"
+                                width={160}
+                                height={64}
+                                className="h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                            <div className="mt-4 text-center md:text-left">
+                                <span className="font-display text-3xl tracking-wider block">Maria Gabriella Ansaldi</span>
+                                <span className="font-serif text-[10px] uppercase tracking-[0.2em] opacity-60">Metodo • Cuore • Anima</span>
+                            </div>
+                        </div>
                     </Link>
-                    <Link href="/" className="inline-block group mt-2">
-                        <span className="font-display text-3xl tracking-wider block">Maria Gabriella Ansaldi</span>
-                        <span className="font-serif text-[10px] uppercase tracking-[0.2em] opacity-60">Metodo • Cuore • Anima</span>
-                    </Link>
-                    <p className="font-serif text-sm opacity-80 max-w-xs pt-4">
+                    <p className="font-serif text-sm opacity-80 max-w-xs pt-4 text-center md:text-left">
                         Un viaggio di trasformazione attraverso l'ascolto profondo e il movimento vitale.
                     </p>
                 </div>
@@ -58,7 +71,7 @@ export default function Footer() {
 
             </div>
 
-            <div className="max-w-7xl mx-auto8 pt-6 border-t border-text-primary/10 flex flex-col md:flex-row justify-between items-center text-xs font-serif opacity-50">
+            <div className="max-w-7xl mx-auto pt-6 border-t border-text-primary/10 flex flex-col md:flex-row justify-between items-center text-xs font-serif opacity-50">
                 <p>&copy; {new Date().getFullYear()} Maria Gabriella Ansaldi. Tutti i diritti riservati.</p>
                 <div className="space-x-4 mt-4 md:mt-0">
                     <Link href="#" className="hover:underline">Privacy Policy</Link>

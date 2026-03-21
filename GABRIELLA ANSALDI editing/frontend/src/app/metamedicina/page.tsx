@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import VioletPetalRain from "@/components/ui/VioletPetalRain";
 
 export default function MetamedicinaPage() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -15,6 +16,9 @@ export default function MetamedicinaPage() {
 
     return (
         <div ref={containerRef} className="relative min-h-[200vh]">
+
+            {/* ─── PIOGGIA PETALI VIOLA ─── */}
+            <VioletPetalRain />
 
             {/* Hero Section */}
             <section className="h-screen flex flex-col items-center justify-center p-8 text-center relative z-10">
@@ -32,7 +36,7 @@ export default function MetamedicinaPage() {
                     transition={{ delay: 0.6, duration: 1 }}
                     className="font-cursive text-2xl md:text-4xl text-text-secondary italic"
                 >
-                    Lavoro Individuale — L'Ascolto Profondo
+                    Lavoro Individuale — L&apos;Ascolto Profondo
                 </motion.p>
             </section>
 
@@ -41,7 +45,7 @@ export default function MetamedicinaPage() {
                 <div className="space-y-8">
                     <h2 className="font-serif text-3xl md:text-5xl text-text-primary">Oltre la Medicina</h2>
                     <p className="font-serif text-lg md:text-xl leading-relaxed text-text-primary/90">
-                        La Metamedicina non è solo una tecnica, è un'arte di guarigione che va oltre la semplice soppressione del sintomo. Significa "andare oltre" la medicina tradizionale per cercare la causa psicosomatica del malessere.
+                        La Metamedicina non è solo una tecnica, è un&apos;arte di guarigione che va oltre la semplice soppressione del sintomo. Significa &quot;andare oltre&quot; la medicina tradizionale per cercare la causa psicosomatica del malessere.
                     </p>
                     <p className="font-serif text-lg md:text-xl leading-relaxed text-text-primary/90">
                         Fondata da Claudia Rainville, ci insegna che ogni dolore o malattia è un segnale che il nostro corpo ci invia per parlarci di un conflitto interiore irrisolto.
@@ -51,7 +55,7 @@ export default function MetamedicinaPage() {
                 <div className="p-12 border border-accent-metamedicina/30 bg-accent-metamedicina/5 backdrop-blur-sm rounded-sm text-center space-y-6">
                     <h3 className="font-serif text-2xl md:text-4xl text-accent-metamedicina">Consulenze Individuali</h3>
                     <p className="font-serif text-lg max-w-2xl mx-auto">
-                        Attraverso il dialogo e l'ascolto empatico, ti accompagno nel decifrare i messaggi del tuo corpo per ritrovare l'equilibrio e la serenità.
+                        Attraverso il dialogo e l&apos;ascolto empatico, ti accompagno nel decifrare i messaggi del tuo corpo per ritrovare l&apos;equilibrio e la serenità.
                     </p>
                     <div className="pt-8">
                         <p className="font-serif italic text-sm opacity-70">Per prenotare una consulenza:</p>
@@ -65,17 +69,7 @@ export default function MetamedicinaPage() {
                             title: "Mente",
                             desc: "Identificare le credenze limitanti.",
                             svg: (
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    stroke="#4B5749"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="w-20 h-20"
-                                    aria-label="Simbolo Mente (Cervello)"
-                                >
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4B5749" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-20 h-20" aria-label="Simbolo Mente">
                                     <circle cx="12" cy="6.5" r="1.5" />
                                     <circle cx="13.5" cy="12.5" r="1.5" />
                                     <path d="M11.25 20.25H6.75a.75.75 0 0 1-.75-.75v-4.07l-2.4-1.18a.75.75 0 0 1-.35-.97L5.25 9.75a7.5 7.5 0 1 1 12 6l.75 6" />
@@ -88,17 +82,7 @@ export default function MetamedicinaPage() {
                             title: "Corpo",
                             desc: "Ascoltare i sintomi come alleati.",
                             svg: (
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    stroke="#4B5749"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="w-20 h-20"
-                                    aria-label="Simbolo Corpo"
-                                >
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#4B5749" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-20 h-20" aria-label="Simbolo Corpo">
                                     <path d="M14.5714 15.0036L15.4286 16.8486C15.4286 16.8486 19.2857 17.6678 19.2857 19.6162C19.2857 21 17.5714 21 17.5714 21H13L10.75 19.75" />
                                     <path d="M9.42864 15.0036L8.5715 16.8486C8.5715 16.8486 4.71436 17.6678 4.71436 19.6162C4.71436 21 6.42864 21 6.42864 21H8.50007L10.7501 19.75L13.5001 18" />
                                     <path d="M3 15.9261C3 15.9261 5.14286 15.4649 6.42857 15.0036C7.71429 8.54595 11.5714 9.00721 12 9.00721C12.4286 9.00721 16.2857 8.54595 17.5714 15.0036C18.8571 15.4649 21 15.9261 21 15.9261" />
@@ -110,17 +94,7 @@ export default function MetamedicinaPage() {
                             title: "Emozione",
                             desc: "Liberare il dolore del passato.",
                             svg: (
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    stroke="#4B5749"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="w-20 h-20"
-                                    aria-label="Simbolo Emozione (Cuore)"
-                                >
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#4B5749" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-20 h-20" aria-label="Simbolo Emozione">
                                     <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
                                     <path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
                                 </svg>
@@ -128,11 +102,7 @@ export default function MetamedicinaPage() {
                         },
                     ].map((item, i) => (
                         <div key={i} className="text-center space-y-5 flex flex-col items-center">
-                            <motion.div
-                                whileHover={{ scale: 1.08 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                className="w-20 h-20 mx-auto flex items-center justify-center cursor-default"
-                            >
+                            <motion.div whileHover={{ scale: 1.08 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-20 h-20 mx-auto flex items-center justify-center cursor-default">
                                 {item.svg}
                             </motion.div>
                             <h4 className="font-serif text-xl text-text-primary">{item.title}</h4>
