@@ -21,7 +21,15 @@ export default function MetamedicinaPage() {
             <VioletPetalRain />
 
             {/* Hero Section */}
-            <section className="h-screen flex flex-col items-center justify-center p-8 text-center relative z-10">
+            <section className="h-screen flex flex-col items-center justify-center p-8 text-center relative z-10 overflow-hidden">
+                <motion.img
+                    src="/images/assets/flower-purple.png"
+                    alt="Fiore Metamedicina"
+                    initial={{ opacity: 0, rotate: 30, scale: 0.8 }}
+                    animate={{ opacity: 0.95, rotate: 15, scale: 1.15 }}
+                    transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
+                    className="absolute top-[20%] md:top-[45%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0"
+                />
                 <motion.h1
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
