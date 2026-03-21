@@ -8,7 +8,7 @@
 import React, { useRef, useCallback } from "react";
 import { motion, Variants } from "framer-motion";
 import Footer from "@/components/layout/Footer";
-import PetalRain from "@/components/ui/PetalRain";
+import PetalRain from "@/components/ui/WhitePetalRain";
 
 // ─── LIQUID VARIANT ───
 const liquidVariant: Variants = {
@@ -105,29 +105,6 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════
-          SECTION 2 — DOMANDA CATALIZZATRICE 1
-          ══════════════════════════════════════════ */}
-      <section
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
-      >
-        <motion.div
-          variants={liquidVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.5 }}
-          className="flex flex-col items-center justify-center gap-6 text-center"
-        >
-          <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
-            &quot;Forse questa volta da solo non ce la faccio?&quot;
-          </p>
-          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
-          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
-            A volte il peso che portiamo è troppo grande per le nostre sole spalle. Riconoscerlo non è debolezza: è il primo atto di coraggio verso il cambiamento.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* ══════════════════════════════════════════
           SECTION 3 — DOMANDA CATALIZZATRICE 2
           ══════════════════════════════════════════ */}
       <section
@@ -146,29 +123,6 @@ export default function Home() {
           <div className="w-16 h-[1px] bg-[#4B5749]/20" />
           <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
             Ogni sintomo, ogni tensione, ogni disagio è un messaggio d&apos;amore dal profondo di noi stessi. Imparare ad ascoltarlo apre la porta a una comprensione più vasta.
-          </p>
-        </motion.div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          SECTION 4 — DOMANDA CATALIZZATRICE 3
-          ══════════════════════════════════════════ */}
-      <section
-        className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
-      >
-        <motion.div
-          variants={liquidVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.5 }}
-          className="flex flex-col items-center justify-center gap-6 text-center"
-        >
-          <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
-            &quot;Posso ritrovare la gioia di essere vivo, pienamente?&quot;
-          </p>
-          <div className="w-16 h-[1px] bg-[#4B5749]/20" />
-          <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
-            Il percorso dalla sofferenza alla fioritura passa attraverso il corpo, la mente e le emozioni. Non sei qui per sopravvivere, ma per riscoprire la tua luce.
           </p>
         </motion.div>
       </section>

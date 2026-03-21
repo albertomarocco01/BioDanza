@@ -33,6 +33,7 @@ export default function Footer() {
                     <nav className="flex flex-col space-y-3">
                         <Link href="/biografia" className="font-serif text-sm opacity-80 hover:opacity-100 transition-opacity">Biografia</Link>
                         <Link href="/percorsi" className="font-serif text-sm opacity-80 hover:opacity-100 transition-opacity">Percorsi</Link>
+                        <Link href="/eventi" className="font-serif text-sm opacity-80 hover:opacity-100 transition-opacity">Eventi</Link>
                         <Link href="/pubblicazioni" className="font-serif text-sm opacity-80 hover:opacity-100 transition-opacity">Pubblicazioni</Link>
                     </nav>
                 </div>
