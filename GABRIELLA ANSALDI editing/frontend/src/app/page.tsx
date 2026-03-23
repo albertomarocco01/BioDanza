@@ -115,7 +115,7 @@ export default function Home() {
           src="/images/assets/fiore-rosa.png"
           alt="Fiore rosa"
           initial={{ opacity: 0, rotate: -20, scale: 0.8 }}
-          animate={{ opacity: 0.92, rotate: -12, scale: 1.15 }}
+          animate={{ opacity: 0.92, rotate: -12, scale: 1 }}
           transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
           className="absolute top-[20%] md:top-[45%] md:-translate-y-1/2 left-[-4%] md:left-[2%] lg:left-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0"
         />
@@ -144,36 +144,13 @@ export default function Home() {
         ref={ctaRef}
         className={`${SECTION_H} w-full flex flex-col items-center justify-end snap-start px-6 md:px-12 relative flex-shrink-0 pb-24`}
       >
-        {/* 🌸 6 ANIMATED FLOWERS 🌸 */}
-        {[
-          // LEFT SIDE
-          { className: "w-16 md:w-20 left-[1%] top-[10%]", rotate: -15, hoverRotate: -20, i: 0 },
-          { className: "w-24 md:w-32 left-[3%] top-[45%]", rotate: -5, hoverRotate: -10, i: 1 },
-          { className: "w-32 md:w-44 left-[0%] top-[68%]", rotate: -20, hoverRotate: -25, i: 2 },
-          // RIGHT SIDE
-          { className: "w-16 md:w-20 right-[1%] top-[15%]", rotate: 10, hoverRotate: 15, i: 3 },
-          { className: "w-24 md:w-32 right-[3%] top-[50%]", rotate: 18, hoverRotate: 23, i: 4 },
-          { className: "w-32 md:w-44 right-[0%] top-[72%]", rotate: 8, hoverRotate: 13, i: 5 },
-        ].map((f) => (
-          <motion.img
-            key={f.i}
-            src="/images/assets/fiore-rosa2.png"
-            alt="Fiore decorativo"
-            initial={{ opacity: 0, scale: 0.85, rotate: f.rotate }}
-            animate={{ opacity: 0.88, scale: [1, 1.04, 1], rotate: f.rotate }}
-            whileHover={{ 
-              scale: 1.12, 
-              rotate: f.hoverRotate,
-              transition: { type: "spring", stiffness: 200, damping: 12 } 
-            }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 3.5 + f.i * 0.4, 
-              ease: "easeInOut" 
-            }}
-            className={`absolute pointer-events-auto z-0 drop-shadow-xl cursor-default ${f.className}`}
-          />
-        ))}
+        {/* 🌸 6 STATIC FLOWERS 🌸 */}
+        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-16 md:w-20 left-[1%] top-[10%] -rotate-15 opacity-88" />
+        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-24 md:w-32 left-[3%] top-[45%] -rotate-5 opacity-88" />
+        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-32 md:w-44 left-[0%] top-[68%] -rotate-20 opacity-88" />
+        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-16 md:w-20 right-[1%] top-[15%] rotate-10 opacity-88" />
+        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-24 md:w-32 right-[3%] top-[50%] rotate-18 opacity-88" />
+        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-32 md:w-44 right-[0%] top-[72%] rotate-8 opacity-88" />
 
         <motion.div
           variants={liquidVariant}
