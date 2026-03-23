@@ -1,182 +1,237 @@
 "use client";
 
-import React, { useEffect, useRef, useCallback } from "react";
+/**
+ * WhitePetalRain — tsParticles v3 implementation
+ *
+ * npm install @tsparticles/react @tsparticles/engine @tsparticles/slim
+ *
+ * Replace {{PETAL_IMAGE_PATH}} with the actual asset path before use,
+ * e.g. /images/white-lotus-petal.png
+ */
 
-const PETAL_PATHS = [
-  "M10,0 C15,5 18,18 13,36 C11,40 9,40 7,36 C3,18 5,5 10,0 Z",
-  "M10,0 C16,4 19,17 13,37 C11,41 8,40 6,36 C2,17 4,4 10,0 Z",
-  "M10,0 C14,6 18,19 12,37 C10,41 7,40 5,36 C1,17 5,6 10,0 Z",
-  "M10,0 C16,4 19,18 11,37 C9,41 6,39 4,35 C1,17 4,4 10,0 Z",
-  "M10,0 C15,3 20,16 13,38 C11,42 8,41 6,37 C2,16 5,4 10,0 Z",
-];
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Container, ICoordinates, ISourceOptions } from "@tsparticles/engine";
 
-interface Petal {
-  id: number;
-  x: number;         // posizione orizzontale iniziale (vw %)
-  delay: number;     // ritardo partenza (ms)
-  duration: number;  // durata caduta (ms)
-  size: number;      // scala
-  rotation: number;  // rotazione iniziale (deg)
-  rotationSpeed: number; // velocità rotazione (deg/s)
-  swayAmount: number;    // ampiezza oscillazione laterale (px)
-  swaySpeed: number;     // velocità oscillazione (s)
-  opacity: number;
-  pathIndex: number;
-  isBurst: boolean;
-  startTime: number; // timestamp assoluto di partenza
+// ─── Constants ───────────────────────────────────────────────────────────────
+const CONTINUOUS_COUNT = 15;
+const BURST_COUNT = 13;
+
+/** Pixel width of each lateral spawn band (% of viewport, clamped 0-100) */
+const LEFT_MIN = 0;
+const LEFT_MAX = 23;
+const RIGHT_MIN = 77;
+const RIGHT_MAX = 100;
+
+// ─── Module-level container ref for burst calls ───────────────────────────────
+let _container: Container | null = null;
+
+function fireBurst(count: number): void {
+  if (!_container || _container.destroyed) return;
+
+  for (let i = 0; i < count; i++) {
+    const onLeft = Math.random() < 0.5;
+    const pct = onLeft
+      ? LEFT_MIN + Math.random() * (LEFT_MAX - LEFT_MIN)
+      : RIGHT_MIN + Math.random() * (RIGHT_MAX - RIGHT_MIN);
+
+    const pos: ICoordinates = {
+      x: (pct / 100) * window.innerWidth,
+      y: -20,
+    };
+
+    const delay = Math.random() * 400;
+    setTimeout(() => {
+      if (_container && !_container.destroyed) {
+        _container.particles.push(1, undefined, undefined, undefined);
+        // Manually place: use addParticle with position
+        _container.particles.addParticle(pos);
+      }
+    }, delay);
+  }
 }
 
-let petalIdCounter = 0;
+// ─── tsParticles configuration ────────────────────────────────────────────────
+const particleOptions: ISourceOptions = {
+  fpsLimit: 60,
+  fullScreen: { enable: false },
+  particles: {
+    number: {
+      value: 0, // Controlled entirely by emitters
+      density: { enable: false },
+    },
+    shape: {
+      type: "image",
+      options: {
+        image: {
+          src: "/white-lotus-petal.png",
+          width: 100,
+          height: 100,
+        },
+      },
+    },
+    // ── Size (scale) — varies per particle ─────────────────────────────────
+    size: {
+      value: { min: 14, max: 28 },
+      animation: {
+        enable: true,
+        speed: 0.8,
+        sync: false,
+        startValue: "random",
+      },
+    },
+    // ── Opacity — fade-in at top, fade-out at bottom via life.opacity ───────
+    opacity: {
+      value: { min: 0.45, max: 0.92 },
+      animation: {
+        enable: true,
+        speed: 0.35,
+        sync: false,
+        startValue: "min",
+        destroy: "none",
+      },
+    },
+    // ── Rotation (Z-axis) ────────────────────────────────────────────────────
+    rotate: {
+      value: { min: 0, max: 360 },
+      direction: "random",
+      animation: {
+        enable: true,
+        speed: { min: 5, max: 20 },
+        sync: false,
+      },
+    },
+    // ── Tilt (X-axis pitch — pseudo-3D) ─────────────────────────────────────
+    tilt: {
+      enable: true,
+      value: { min: 0, max: 360 },
+      direction: "random",
+      animation: {
+        enable: true,
+        speed: { min: 3, max: 14 },
+        sync: false,
+      },
+    },
+    // ── Roll (Y-axis yaw effect) ─────────────────────────────────────────────
+    roll: {
+      enable: true,
+      speed: { min: 5, max: 16 },
+      darken: { enable: true, value: 20 },
+    },
+    // ── Wobble (horizontal sway / wind) ─────────────────────────────────────
+    wobble: {
+      enable: true,
+      distance: { min: 22, max: 65 },
+      speed: {
+        angle: { min: 4, max: 12 },
+        move: 2,
+      },
+    },
+    // ── Movement ─────────────────────────────────────────────────────────────
+    move: {
+      enable: true,
+      direction: "bottom",
+      speed: { min: 1.2, max: 3.8 },
+      straight: false,
+      random: true,
+      outModes: { default: "out" },
+      gravity: {
+        enable: true,
+        acceleration: 0.12,
+        maxSpeed: 4.5,
+      },
+    },
+    // ── Lifecycle / fade ─────────────────────────────────────────────────────
+    life: {
+      duration: {
+        sync: false,
+        value: { min: 7, max: 15 },
+      },
+      count: 1,
+    },
+  },
+  // ── Two emitters: left band + right band (side-concentration) ──────────────
+  emitters: [
+    {
+      // Left lateral zone: 0-23% of viewport width
+      position: { x: 11.5, y: 0 },
+      size: { width: 23, height: 0 },
+      rate: {
+        quantity: 1,
+        delay: 16 / CONTINUOUS_COUNT, // evenly spread CONTINUOUS_COUNT/2 from each side
+      },
+      life: { count: 0 }, // emit forever
+      particles: {
+        move: { direction: "bottom" },
+        life: { count: 1 },
+      },
+    },
+    {
+      // Right lateral zone: 77-100% of viewport width
+      position: { x: 88.5, y: 0 },
+      size: { width: 23, height: 0 },
+      rate: {
+        quantity: 1,
+        delay: 16 / CONTINUOUS_COUNT,
+      },
+      life: { count: 0 },
+      particles: {
+        move: { direction: "bottom" },
+        life: { count: 1 },
+      },
+    },
+  ],
+  detectRetina: true,
+};
 
-function createPetal(isBurst = false): Petal {
-  return {
-    id: petalIdCounter++,
-    // Concentra i petali nelle fasce laterali (0-25% e 75-100%)
-    x: Math.random() < 0.5
-      ? Math.random() * 28 - 5        // fascia sinistra: -5% → 23%
-      : 77 + Math.random() * 28,      // fascia destra:  77% → 105%
-    delay: isBurst ? Math.random() * 400 : Math.random() * 8000,
-    duration: 6000 + Math.random() * 6000,
-    size: 1.9 + Math.random() * 1.0, //DIMENSIONE
-    rotation: Math.random() * 360,
-    rotationSpeed: (Math.random() - 0.5) * 120,
-    swayAmount: 30 + Math.random() * 60,
-    swaySpeed: 2 + Math.random() * 3,
-    opacity: 0.75 + Math.random() * 0.3, //REGOLAZIONE OPACITA' 
-    pathIndex: Math.floor(Math.random() * PETAL_PATHS.length),
-    isBurst,
-    startTime: performance.now() + (isBurst ? Math.random() * 400 : Math.random() * 8000),
-  };
-}
-
-const CONTINUOUS_COUNT = 15; // PETALI SEMPRE ATTIVI
-const BURST_COUNT = 13;      // PETALI AL BURST
-
-export default function PetalRain({ scrollContainer }: { scrollContainer: React.RefObject<HTMLDivElement | null> }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const petalsRef = useRef<Petal[]>([]);
-  const rafRef = useRef<number>(0);
+// ─── Component ────────────────────────────────────────────────────────────────
+export default function PetalRain({
+  scrollContainer,
+}: {
+  scrollContainer: React.RefObject<HTMLDivElement | null>;
+}) {
+  const [engineReady, setEngineReady] = useState(false);
   const lastScrollSection = useRef<number>(-1);
 
-  // ─── Init continuous petals ───
+  // ── One-time engine initialisation ──────────────────────────────────────────
   useEffect(() => {
-    petalsRef.current = Array.from({ length: CONTINUOUS_COUNT }, () => createPetal(false));
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => setEngineReady(true));
   }, []);
 
-  // ─── Burst on section change ───
-  const triggerBurst = useCallback(() => {
-    const burst = Array.from({ length: BURST_COUNT }, () => createPetal(true));
-    petalsRef.current.push(...burst);
+  // ── Store container reference and wire burst ─────────────────────────────────
+  const onParticlesLoaded = useCallback(async (container?: Container) => {
+    _container = container ?? null;
   }, []);
 
+  // ── Scroll-based burst trigger ───────────────────────────────────────────────
   useEffect(() => {
-    const container = scrollContainer.current;
-    if (!container) return;
+    const el = scrollContainer.current;
+    if (!el) return;
 
     const handleScroll = () => {
-      const scrollTop = container.scrollTop;
-      const sectionHeight = window.innerHeight;
-      const currentSection = Math.round(scrollTop / sectionHeight);
+      const currentSection = Math.round(el.scrollTop / window.innerHeight);
       if (currentSection !== lastScrollSection.current) {
         lastScrollSection.current = currentSection;
-        triggerBurst();
+        fireBurst(BURST_COUNT);
       }
     };
 
-    container.addEventListener("scroll", handleScroll, { passive: true });
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, [scrollContainer, triggerBurst]);
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, [scrollContainer]);
 
-  // ─── Canvas render loop ───
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    // Pre-parse SVG paths into Path2D
-    const paths2D = PETAL_PATHS.map((d) => new Path2D(d));
-
-    const draw = (now: number) => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const toRemove: number[] = [];
-
-      petalsRef.current.forEach((petal, index) => {
-        const elapsed = now - petal.startTime;
-        if (elapsed < 0) return; // not started yet
-
-        const progress = elapsed / petal.duration; // 0 → 1
-
-        if (progress > 1) {
-          if (petal.isBurst) {
-            // burst petals: remove when done
-            toRemove.push(index);
-          } else {
-            // continuous petals: recycle
-            petalsRef.current[index] = {
-              ...createPetal(false),
-              startTime: now + Math.random() * 1000,
-            };
-          }
-          return;
-        }
-
-        // Position
-        const y = -30 + progress * (canvas.height + 60);
-        const sway = Math.sin((elapsed / 1000) * (Math.PI * 2 / petal.swaySpeed)) * petal.swayAmount;
-        const x = (petal.x / 100) * canvas.width + sway;
-
-        // Rotation
-        const rot = (petal.rotation + (elapsed / 1000) * petal.rotationSpeed) * (Math.PI / 180);
-
-        // Fade in/out
-        let alpha = petal.opacity;
-        if (progress < 0.08) alpha *= progress / 0.08;
-        if (progress > 0.85) alpha *= (1 - progress) / 0.15;
-
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(rot);
-        ctx.scale(petal.size, petal.size);
-
-        // Petal fill — soft white/cream
-        ctx.fillStyle = `rgba(255, 252, 240, ${alpha})`;
-        ctx.strokeStyle = `rgba(210, 195, 165, ${alpha * 0.6})`;
-        ctx.lineWidth = 0.5 / petal.size;
-
-        ctx.fill(paths2D[petal.pathIndex]);
-        ctx.stroke(paths2D[petal.pathIndex]);
-
-        ctx.restore();
-      });
-
-      // Remove finished burst petals (in reverse to preserve indices)
-      toRemove.reverse().forEach((i) => petalsRef.current.splice(i, 1));
-
-      rafRef.current = requestAnimationFrame(draw);
-    };
-
-    rafRef.current = requestAnimationFrame(draw);
-
-    return () => {
-      cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
+  if (!engineReady) return null;
 
   return (
-    <canvas
-      ref={canvasRef}
+    <Particles
+      id="tsparticles-petalrain"
       className="fixed inset-0 pointer-events-none z-50"
-      aria-hidden="true"
+      style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 50 }}
+      particlesLoaded={onParticlesLoaded}
+      options={particleOptions}
     />
   );
 }
