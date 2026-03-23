@@ -52,7 +52,7 @@ export default function Home() {
           initial={{ opacity: 0, rotate: 30, scale: 0.8 }}
           animate={{ opacity: 0.95, rotate: 15, scale: 1 }}
           transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
-          className="absolute top-[20%] md:top-[45%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0"
+          className="absolute top-[20%] md:top-[52%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0"
         />
 
         <motion.span
@@ -110,14 +110,22 @@ export default function Home() {
       <section
         className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
-        {/* 🌸 FIORE ROSA (SINISTRA) */}
+        {/* 🌸 FIORE ROSA (SINISTRA) — visually compensated for internal transparent padding */}
         <motion.img
           src="/images/assets/fiore-rosa.png"
           alt="Fiore rosa"
-          initial={{ opacity: 0, rotate: -20, scale: 0.8 }}
-          animate={{ opacity: 0.92, rotate: -12, scale: 1 }}
-          transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
-          className="absolute top-[20%] md:top-[45%] md:-translate-y-1/2 left-[-4%] md:left-[2%] lg:left-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0"
+          initial={{ opacity: 0, rotate: -8, scale: 0.85 }}
+          whileInView={{ opacity: 0.92, rotate: -5, scale: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 1.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className={[
+            "absolute pointer-events-none z-0 drop-shadow-2xl",
+            "top-[5%] md:top-[35%] md:-translate-y-1/2",
+            "left-[-15%] md:left-[-25%] lg:left-[-10%]",
+            // 🎛️ TWEAK SIZE HERE ↓ — increase w-[Xpx] values if flower still looks too small
+            "w-[450px] md:w-[750px] lg:w-[950px]",
+            // 🎛️ END TWEAK
+          ].join(" ")}
         />
 
         <motion.div

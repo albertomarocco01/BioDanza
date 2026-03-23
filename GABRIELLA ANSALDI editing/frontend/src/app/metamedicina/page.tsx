@@ -1,51 +1,32 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 import VioletPetalRain from "@/components/ui/VioletPetalRain";
 
 export default function MetamedicinaPage() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"],
-    });
-
-    const flowerRotate = useTransform(scrollYProgress, [0, 1], [0, -220]);
-    const flowerX = useTransform(scrollYProgress, [0, 1], [0, -100]);
-
     return (
-        <div ref={containerRef} className="relative min-h-[200vh]">
+        <div className="relative min-h-[200vh]">
 
             {/* ─── PIOGGIA PETALI VIOLA ─── */}
             <VioletPetalRain />
 
             {/* Hero Section */}
             <section className="h-screen flex flex-col items-center justify-center p-8 text-center relative z-10 overflow-hidden">
-                <motion.img
+                <img
                     src="/images/assets/flower-purple.png"
                     alt="Fiore Metamedicina"
-                    initial={{ opacity: 0, rotate: 30, scale: 0.8 }}
-                    animate={{ opacity: 0.95, rotate: 15, scale: 1.15 }}
-                    transition={{ duration: 1.8, delay: 0.3, ease: "easeOut" }}
-                    className="absolute top-[20%] md:top-[45%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0"
+                    className="absolute top-[17%] md:top-[72%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0 opacity-[0.95] rotate-[15deg]"
                 />
-                <motion.h1
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1.2 }}
+                <h1
                     className="font-serif text-5xl md:text-8xl text-accent-metamedicina mb-6 uppercase tracking-widest"
                 >
                     Metamedicina
-                </motion.h1>
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: 0.6, duration: 1 }}
+                </h1>
+                <p
                     className="font-cursive text-2xl md:text-4xl text-text-secondary italic"
                 >
                     Lavoro Individuale — L&apos;Ascolto Profondo
-                </motion.p>
+                </p>
             </section>
 
             {/* Content Section */}
@@ -110,9 +91,9 @@ export default function MetamedicinaPage() {
                         },
                     ].map((item, i) => (
                         <div key={i} className="text-center space-y-5 flex flex-col items-center">
-                            <motion.div whileHover={{ scale: 1.08 }} transition={{ type: "spring", stiffness: 300, damping: 20 }} className="w-20 h-20 mx-auto flex items-center justify-center cursor-default">
+                            <div className="w-20 h-20 mx-auto flex items-center justify-center cursor-default">
                                 {item.svg}
-                            </motion.div>
+                            </div>
                             <h4 className="font-serif text-xl text-text-primary">{item.title}</h4>
                             <p className="font-serif text-sm text-text-primary/70 max-w-[200px]">{item.desc}</p>
                         </div>
