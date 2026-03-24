@@ -59,10 +59,10 @@ export default function ContattiPage() {
                     <div className="pt-8">
                         <h3 className="font-serif uppercase tracking-[0.2em] text-sm font-bold opacity-60 mb-6">Seguimi sui Social</h3>
                         <div className="flex justify-center space-x-6">
-                            <a href="https://www.facebook.com/m.gabry.ansaldi" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full border border-text-primary/20 flex items-center justify-center hover:bg-text-primary hover:text-primary transition-all text-xl font-display aria-label='Facebook'">
+                            <a href="https://www.facebook.com/m.gabry.ansaldi" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full border border-blue-800/40 text-blue-800/90 flex items-center justify-center hover:bg-blue-800 hover:border-blue-800 hover:text-[#FDF9ED] transition-all text-xl font-display aria-label='Facebook'">
                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-1/3 h-1/3"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                              </a>
-                             <a href="https://www.instagram.com/gabrybiodanza/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full border border-text-primary/20 flex items-center justify-center hover:bg-text-primary hover:text-primary transition-all text-xl font-display aria-label='Instagram'">
+                             <a href="https://www.instagram.com/gabrybiodanza/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 rounded-full border border-rose-600/40 text-rose-600/90 flex items-center justify-center hover:bg-rose-600 hover:border-rose-600 hover:text-[#FDF9ED] transition-all text-xl font-display aria-label='Instagram'">
                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-1/3 h-1/3"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                              </a>
                         </div>

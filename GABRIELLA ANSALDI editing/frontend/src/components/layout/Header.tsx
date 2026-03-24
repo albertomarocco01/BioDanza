@@ -60,18 +60,14 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
                 {/* LOGO — ASSET INJECTED: logo.png */}
                 <Link href="/" onClick={handleBrandClick} className="flex items-center group">
-                    <div className="relative w-16 h-16 mr-4 transition-transform duration-300 group-hover:scale-105">
+                    <div className="relative h-20 w-60 transition-transform duration-300 group-hover:scale-105">
                         <Image
-                            src="/logo.png"
+                            src="/LogoHeader.png"
                             alt="Maria Gabriella Ansaldi Logo"
                             fill
-                            className="object-contain"
+                            className="object-contain object-left"
                             priority
                         />
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="font-display text-xl leading-none tracking-wider">Maria Gabriella Ansaldi</span>
-                        <span className="font-serif text-[10px] uppercase tracking-[0.2em] opacity-80 mt-1 pl-1">Metodo • Cuore • Anima</span>
                     </div>
                 </Link>
 
@@ -148,10 +144,10 @@ export default function Header() {
                         ))}
                     </nav>
                     <div className="flex items-center space-x-4 border-l border-text-primary/20 pl-8">
-                        <a href="https://www.facebook.com/m.gabry.ansaldi" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-text-secondary transition-colors" aria-label="Facebook">
+                        <a href="https://www.facebook.com/m.gabry.ansaldi" target="_blank" rel="noopener noreferrer" className="text-blue-800/70 hover:text-blue-800 transition-colors" aria-label="Facebook">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                         </a>
-                        <a href="https://www.instagram.com/gabrybiodanza/" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-text-secondary transition-colors" aria-label="Instagram">
+                        <a href="https://www.instagram.com/gabrybiodanza/" target="_blank" rel="noopener noreferrer" className="text-rose-600/70 hover:text-rose-600 transition-colors" aria-label="Instagram">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                         </a>
                     </div>

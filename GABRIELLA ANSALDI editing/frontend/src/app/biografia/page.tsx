@@ -51,11 +51,11 @@ const certifications = [
 
 export default function ChiSonoPage() {
     return (
-        <div className="max-w-5xl mx-auto px-8 pt-32 pb-24 min-h-screen">
+        <div className="max-w-5xl mx-auto px-8 pt-20 pb-24 min-h-screen">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center mb-24"
+                className="text-center mb-12"
             >
                 <h1 className="font-serif text-5xl md:text-7xl text-text-primary mb-6 uppercase tracking-widest">Biografia</h1>
                 <p className="font-cursive text-xl md:text-2xl text-text-secondary italic">Professionista dell'ascolto attento ed empatico</p>
@@ -109,7 +109,7 @@ export default function ChiSonoPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="mt-32"
+                className="mt-16"
             >
                 <div className="text-center mb-16">
                     <span className="font-serif text-[10px] uppercase tracking-[0.3em] opacity-50">Formazione & Riconoscimenti</span>

@@ -53,7 +53,7 @@ export default function EventiPage() {
   return (
     <div className="min-h-screen bg-[#FFF8E6] text-[#4B5749] font-serif">
       {/* Hero Section */}
-      <section className="pt-32 pb-8 px-6 md:px-12 max-w-7xl mx-auto text-center">
+      <section className="pt-36 pb-8 px-6 md:px-12 max-w-7xl mx-auto text-center">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -117,7 +117,7 @@ export default function EventiPage() {
                 </p>
                 <div className="pt-4 flex items-center gap-2 text-sm font-bold uppercase tracking-widest">
                   <span className="w-8 h-[1px] bg-[#4B5749]/30" />
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">Scopri di più</span>
+                  <span className="opacity-100 transition-opacity duration-300">Scopri di più</span>
                 </div>
               </div>
             </motion.div>
@@ -126,7 +126,7 @@ export default function EventiPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#f2ead3] py-24 px-6 md:px-12 text-center mt-20">
+      <section className="bg-[#f2ead3] py-12 px-6 md:px-12 text-center mt-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
