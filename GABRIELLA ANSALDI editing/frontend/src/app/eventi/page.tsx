@@ -53,7 +53,7 @@ export default function EventiPage() {
   return (
     <div className="min-h-screen bg-[#FFF8E6] text-[#4B5749] font-serif">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto text-center">
+      <section className="pt-32 pb-8 px-6 md:px-12 max-w-7xl mx-auto text-center">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function EventiPage() {
       </section>
 
       {/* Events Grid */}
-      <section className="px-6 md:px-12 py-20 max-w-7xl mx-auto">
+      <section className="px-6 md:px-12 pt-6 pb-20 max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"

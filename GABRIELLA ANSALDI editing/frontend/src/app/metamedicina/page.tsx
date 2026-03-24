@@ -1,22 +1,29 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function MetamedicinaPage() {
     return (
         <div className="relative min-h-[200vh]">
             {/* Hero Section */}
             <section className="h-screen flex flex-col items-center justify-center p-8 text-center relative z-10 overflow-hidden">
-                <h1
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
                     className="font-serif text-5xl md:text-8xl text-accent-metamedicina mb-6 uppercase tracking-widest"
                 >
                     Metamedicina
-                </h1>
-                <p
+                </motion.h1>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 1 }}
                     className="font-cursive text-2xl md:text-4xl text-text-secondary italic"
                 >
                     Lavoro Individuale — L&apos;Ascolto Profondo
-                </p>
+                </motion.p>
             </section>
 
             {/* Content Section */}

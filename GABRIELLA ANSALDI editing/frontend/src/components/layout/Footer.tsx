@@ -14,7 +14,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="w-screen bg-accent-biodanza/60 backdrop-blur-md border-t border-white/20 py-8 px-8 mt-auto left-[calc(-50vw+50%)] relative">
+        <footer className="w-full glass-bar border-t border-white/20 py-8 px-8">
             
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-text-primary">
 

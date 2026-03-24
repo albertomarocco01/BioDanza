@@ -17,6 +17,13 @@
     /* Verde Bosco/Olivo */
     --selection-bg: #E9EFF4;
     --selection-text: #4B5749;
+
+    /* ─── Glassmorphism (header / footer) ────────────────────────
+       Modifica --glass-opacity per regolare la trasparenza:
+       0.15 = quasi invisibile  ·  0.50 = medio  ·  1.00 = pieno
+    ──────────────────────────────────────────────────────────── */
+    --glass-rgb: 255, 248, 230;   /* colore base: #FFF8E6 (avorio) */
+    --glass-opacity: 0.60;        /* ← CAMBIA SOLO QUESTO VALUE    */
   }
 
   html {
@@ -35,7 +42,6 @@
 
   body {
     @apply mx-auto max-w-[1920px] overflow-x-hidden min-h-screen flex flex-col;
-    /* Assicuriamo che il body erediti lo sfondo chiaro */
     background-color: var(--background);
   }
 
@@ -69,18 +75,25 @@
 
   ::-webkit-scrollbar-thumb {
     background-color: #d1d5db;
-    /* gray-300 */
     border-radius: 9999px;
-    /* rounded-full */
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background-color: #9ca3af;
-    /* gray-400 */
   }
 }
 
 /* Fine @layer base */
+
+@layer components {
+  /* Barra glassmorphism riutilizzabile (header / footer).
+     Regola --glass-opacity in :root per cambiare la trasparenza globale. */
+  .glass-bar {
+    background-color: rgba(var(--glass-rgb), var(--glass-opacity));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
 
 @layer utilities {
 
