@@ -1,22 +1,12 @@
 "use client";
 
 import React from "react";
-import VioletPetalRain from "@/components/ui/VioletPetalRain";
 
 export default function MetamedicinaPage() {
     return (
         <div className="relative min-h-[200vh]">
-
-            {/* ─── PIOGGIA PETALI VIOLA ─── */}
-            <VioletPetalRain />
-
             {/* Hero Section */}
             <section className="h-screen flex flex-col items-center justify-center p-8 text-center relative z-10 overflow-hidden">
-                <img
-                    src="/images/assets/flower-purple.png"
-                    alt="Fiore Metamedicina"
-                    className="absolute top-[17%] md:top-[72%] md:-translate-y-1/2 right-[-4%] md:right-[2%] lg:right-[8%] w-[192px] md:w-[288px] lg:w-[352px] drop-shadow-2xl pointer-events-none z-0 opacity-[0.95] rotate-[15deg]"
-                />
                 <h1
                     className="font-serif text-5xl md:text-8xl text-accent-metamedicina mb-6 uppercase tracking-widest"
                 >
@@ -41,18 +31,7 @@ export default function MetamedicinaPage() {
                     </p>
                 </div>
 
-                <div className="p-12 border border-accent-metamedicina/30 bg-accent-metamedicina/5 backdrop-blur-sm rounded-sm text-center space-y-6">
-                    <h3 className="font-serif text-2xl md:text-4xl text-accent-metamedicina">Consulenze Individuali</h3>
-                    <p className="font-serif text-lg max-w-2xl mx-auto">
-                        Attraverso il dialogo e l&apos;ascolto empatico, ti accompagno nel decifrare i messaggi del tuo corpo per ritrovare l&apos;equilibrio e la serenità.
-                    </p>
-                    <div className="pt-8">
-                        <p className="font-serif italic text-sm opacity-70">Per prenotare una consulenza:</p>
-                        <p className="font-serif text-xl mt-2">Visita la sezione <a href="/contatti" className="underline hover:text-accent-metamedicina transition-colors">Contatti</a></p>
-                    </div>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-12 pb-24">
+                <div className="grid md:grid-cols-3 gap-12">
                     {[
                         {
                             title: "Mente",
@@ -98,6 +77,17 @@ export default function MetamedicinaPage() {
                             <p className="font-serif text-sm text-text-primary/70 max-w-[200px]">{item.desc}</p>
                         </div>
                     ))}
+                </div>
+
+                <div className="p-12 border border-accent-metamedicina/30 bg-accent-metamedicina/5 backdrop-blur-sm rounded-sm text-center space-y-6 pb-24">
+                    <h3 className="font-serif text-2xl md:text-4xl text-accent-metamedicina">Consulenze Individuali</h3>
+                    <p className="font-serif text-lg max-w-2xl mx-auto">
+                        Attraverso il dialogo e l&apos;ascolto empatico, ti accompagno nel decifrare i messaggi del tuo corpo per ritrovare l&apos;equilibrio e la serenità.
+                    </p>
+                    <div className="pt-8">
+                        <p className="font-serif italic text-sm opacity-70">Per prenotare una consulenza:</p>
+                        <p className="font-serif text-xl mt-2">Visita la sezione <a href="/contatti" className="underline hover:text-accent-metamedicina transition-colors">Contatti</a></p>
+                    </div>
                 </div>
             </section>
         </div>

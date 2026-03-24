@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const certifications = [
     {
@@ -69,48 +70,13 @@ export default function ChiSonoPage() {
                     transition={{ delay: 0.2 }}
                     className="relative aspect-[3/4] w-full border border-text-primary/10 bg-white/50 p-2 shadow-sm rotate-[-2deg] overflow-hidden"
                 >
-                    <svg
-                        viewBox="0 0 300 400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-full h-full"
-                        aria-label="Placeholder ritratto"
-                    >
-                        {/* sfondo morbido */}
-                        <defs>
-                            <radialGradient id="bg" cx="50%" cy="60%" r="70%">
-                                <stop offset="0%" stopColor="#f7ede2" />
-                                <stop offset="100%" stopColor="#e8d5c0" />
-                            </radialGradient>
-                            <radialGradient id="skin" cx="50%" cy="40%" r="60%">
-                                <stop offset="0%" stopColor="#f5cba7" />
-                                <stop offset="100%" stopColor="#e8a87c" />
-                            </radialGradient>
-                            <linearGradient id="hair" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#f0d090" />
-                                <stop offset="50%" stopColor="#d4a840" />
-                                <stop offset="100%" stopColor="#b8860b" />
-                            </linearGradient>
-                            <linearGradient id="dress" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stopColor="#c8b4d4" />
-                                <stop offset="100%" stopColor="#9b7aaf" />
-                            </linearGradient>
-                        </defs>
-                        {/* sfondo */}
-                        <rect width="300" height="400" fill="url(#bg)" />
-                        {/* spalle / corpo */}
-                        <ellipse cx="150" cy="380" rx="120" ry="80" fill="url(#dress)" />
-                        <path d="M60 320 Q90 280 150 270 Q210 280 240 320 L240 400 L60 400 Z" fill="url(#dress)" />
-                        {/* collo */}
-                        <rect x="132" y="210" width="36" height="60" rx="12" fill="url(#skin)" />
-                        {/* testa di spalle */}
-                        <ellipse cx="150" cy="195" rx="55" ry="60" fill="url(#skin)" />
-                        {/* capelli biondi — volumosi, di spalle */}
-                        <ellipse cx="150" cy="175" rx="62" ry="68" fill="url(#hair)" />
-                        <path d="M88 185 Q70 230 75 290 Q100 310 130 315 Q110 270 105 230 Q100 210 88 185 Z" fill="url(#hair)" />
-                        <path d="M212 185 Q230 230 225 290 Q200 310 170 315 Q190 270 195 230 Q200 210 212 185 Z" fill="url(#hair)" />
-                        {/* luccichio capelli */}
-                        <ellipse cx="130" cy="148" rx="18" ry="10" fill="#fff8dc" opacity="0.45" transform="rotate(-20 130 148)" />
-                    </svg>
+                    <Image
+                        src="https://images.unsplash.com/photo-1605381060423-078a6faf1938?q=80&w=764&auto=format&fit=crop"
+                        alt="Ritratto — donna di spalle"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                 </motion.div>
 
                 {/* Biography Text */}

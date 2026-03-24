@@ -3,15 +3,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import PinkAndWhitePetalRain from "@/components/ui/PINKWHITE";
 
 export default function PercorsiPage() {
     return (
         <div className="relative min-h-screen">
-
-            {/* ─── PIOGGIA PETALI ROSA + BIANCHI ─── */}
-            <PinkAndWhitePetalRain />
-
             <div className="max-w-6xl mx-auto px-8 pt-32 pb-24 min-h-screen relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

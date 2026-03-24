@@ -14,9 +14,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="relative w-screen border-t border-text-primary/10 py-8 px-8 mt-auto overflow-hidden left-[calc(-50vw+50%)]">
-            {/* Absolute Background to ensure it fills the screen width */}
-            <div className="absolute inset-0 bg-primary-dark/30 -z-10" />
+        <footer className="w-screen bg-accent-biodanza/60 backdrop-blur-md border-t border-white/20 py-8 px-8 mt-auto left-[calc(-50vw+50%)] relative">
             
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-text-primary">
 

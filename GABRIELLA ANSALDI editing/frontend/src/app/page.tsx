@@ -8,7 +8,6 @@
 import React, { useRef, useCallback } from "react";
 import { motion, Variants } from "framer-motion";
 import Footer from "@/components/layout/Footer";
-import PetalRain from "@/components/ui/WhitePetalRain";
 
 // ─── LIQUID VARIANT ───
 const liquidVariant: Variants = {
@@ -35,10 +34,7 @@ export default function Home() {
     <div
       ref={scrollContainerRef}
       className="h-[100dvh] overflow-y-auto snap-y snap-mandatory scroll-smooth bg-[#FFF8E6] text-[#4B5749] overflow-x-hidden"
-    >
-      {/* ─── PETAL RAIN — fixed canvas layer, listens to scroll container ─── */}
-      <PetalRain scrollContainer={scrollContainerRef} />
-
+      >
       {/* ══════════════════════════════════════════
           SECTION 1 — HERO
           ══════════════════════════════════════════ */}
@@ -110,24 +106,6 @@ export default function Home() {
       <section
         className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
-        {/* 🌸 FIORE ROSA (SINISTRA) — visually compensated for internal transparent padding */}
-        <motion.img
-          src="/images/assets/fiore-rosa.png"
-          alt="Fiore rosa"
-          initial={{ opacity: 0, rotate: -8, scale: 0.85 }}
-          whileInView={{ opacity: 0.92, rotate: -5, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 1.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className={[
-            "absolute pointer-events-none z-0 drop-shadow-2xl",
-            "top-[5%] md:top-[35%] md:-translate-y-1/2",
-            "left-[-15%] md:left-[-25%] lg:left-[-10%]",
-            // 🎛️ TWEAK SIZE HERE ↓ — increase w-[Xpx] values if flower still looks too small
-            "w-[450px] md:w-[750px] lg:w-[950px]",
-            // 🎛️ END TWEAK
-          ].join(" ")}
-        />
-
         <motion.div
           variants={liquidVariant}
           initial="hidden"
@@ -152,14 +130,6 @@ export default function Home() {
         ref={ctaRef}
         className={`${SECTION_H} w-full flex flex-col items-center justify-end snap-start px-6 md:px-12 relative flex-shrink-0 pb-24`}
       >
-        {/* 🌸 6 STATIC FLOWERS 🌸 */}
-        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-16 md:w-20 left-[1%] top-[10%] -rotate-15 opacity-88" />
-        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-24 md:w-32 left-[3%] top-[45%] -rotate-5 opacity-88" />
-        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-32 md:w-44 left-[0%] top-[68%] -rotate-20 opacity-88" />
-        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-16 md:w-20 right-[1%] top-[15%] rotate-10 opacity-88" />
-        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-24 md:w-32 right-[3%] top-[50%] rotate-18 opacity-88" />
-        <img src="/images/assets/fiore-rosa2.png" alt="Fiore decorativo" className="absolute pointer-events-none z-0 drop-shadow-xl w-32 md:w-44 right-[0%] top-[72%] rotate-8 opacity-88" />
-
         <motion.div
           variants={liquidVariant}
           initial="hidden"

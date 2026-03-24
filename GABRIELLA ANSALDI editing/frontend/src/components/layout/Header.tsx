@@ -57,7 +57,7 @@ export default function Header() {
     };
 
     return (
-        <header className="fixed top-0 left-0 w-full z-[100] bg-primary/60 backdrop-blur-md border-b border-text-primary/10 transition-all duration-300">
+        <header className="fixed top-0 left-0 w-full z-[100] bg-accent-biodanza/60 backdrop-blur-md border-b border-white/20 transition-all duration-300">
             <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
                 {/* LOGO — ASSET INJECTED: logo.png */}
                 <Link href="/" onClick={handleBrandClick} className="flex items-center group">
@@ -120,7 +120,7 @@ export default function Header() {
                                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                                     transition={{ duration: 0.2, ease: "easeOut" }}
-                                                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-primary/95 backdrop-blur-xl border border-text-primary/10 shadow-2xl py-2 z-[110]"
+                                                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-accent-biodanza/70 backdrop-blur-md border border-white/20 shadow-2xl py-2 z-[110]"
                                                 >
                                                     {percorsiDropdown.map((subItem) => (
                                                         <Link
@@ -183,7 +183,7 @@ export default function Header() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="md:hidden bg-primary/95 backdrop-blur-lg border-b border-text-primary/10 overflow-hidden"
+                        className="md:hidden bg-accent-biodanza/70 backdrop-blur-md border-b border-white/20 overflow-hidden"
                     >
                         <div className="flex flex-col py-4 px-6 space-y-4">
                             {percorsiDropdown.map((subItem) => (
