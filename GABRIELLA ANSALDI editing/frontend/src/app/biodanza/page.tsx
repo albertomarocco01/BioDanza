@@ -21,7 +21,7 @@ export default function BiodanzaPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
-                    className="font-serif text-5xl md:text-8xl text-accent-biodanza mb-6 uppercase tracking-widest"
+                    className="font-serif text-5xl md:text-8xl text-[#5B8BD0] mb-6 uppercase tracking-widest"
                 >
                     Biodanza
                 </motion.h1>

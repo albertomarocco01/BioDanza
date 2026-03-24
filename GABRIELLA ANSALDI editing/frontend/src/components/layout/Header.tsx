@@ -56,7 +56,7 @@ export default function Header() {
     };
 
     return (
-        <header className="fixed top-0 left-0 w-full z-[100] glass-bar border-b border-white/20 transition-all duration-300">
+        <header className="fixed top-0 left-0 w-full z-[100] bg-[#FDF9ED] border-b border-text-primary/10 transition-all duration-300">
             <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
                 {/* LOGO — ASSET INJECTED: logo.png */}
                 <Link href="/" onClick={handleBrandClick} className="flex items-center group">

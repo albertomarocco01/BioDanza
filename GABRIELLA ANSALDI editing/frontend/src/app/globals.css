@@ -22,7 +22,7 @@
        Modifica --glass-opacity per regolare la trasparenza:
        0.15 = quasi invisibile  ·  0.50 = medio  ·  1.00 = pieno
     ──────────────────────────────────────────────────────────── */
-    --glass-rgb: 255, 248, 230;   /* colore base: #FFF8E6 (avorio) */
+    --glass-rgb: 233, 239, 244;   /* colore base: #E9EFF4 (azzurro/grigio chiaro) */
     --glass-opacity: 0.95;        /* ← CAMBIA SOLO QUESTO VALUE    */
   }
 

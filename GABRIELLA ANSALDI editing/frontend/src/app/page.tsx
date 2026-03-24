@@ -66,7 +66,7 @@ export default function Home() {
           transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
           className="font-cursive text-5xl md:text-7xl lg:text-8xl leading-tight italic max-w-5xl text-center relative z-10"
         >
-          &quot;Forse questa volta ho bisogno di <span className="text-[#5E2F00] italic font-bold">aiuto</span>?&quot;
+          &quot;Forse questa volta ho bisogno di <span className="text-[#DE84A8] italic font-bold">aiuto</span>?&quot;
         </motion.h1>
 
         <motion.p
@@ -114,7 +114,7 @@ export default function Home() {
           className="flex flex-col items-center justify-center gap-6 text-center"
         >
           <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
-            &quot;E se <span className="text-[#5E2F00] italic font-bold">il mio corpo</span> stesse cercando di dirmi qualcosa?&quot;
+            &quot;E se <span className="text-[#DE84A8] italic font-bold">il mio corpo</span> stesse cercando di dirmi qualcosa?&quot;
           </p>
           <div className="w-16 h-[1px] bg-[#4B5749]/20" />
           <p className="font-serif text-xl md:text-2xl opacity-80 max-w-3xl leading-relaxed">
@@ -138,7 +138,7 @@ export default function Home() {
           className="flex flex-col items-center justify-center gap-6 text-center"
         >
           <p className="font-cursive text-3xl md:text-5xl text-[#5E2F00] max-w-3xl leading-relaxed italic">
-            &quot;Se senti che è arrivato <span className="text-[#5E2F00] italic font-bold">il momento</span>, <span className="text-[#5E2F00] italic font-bold">io sono qui</span>.&quot;
+            &quot;Se senti che è arrivato <span className="text-[#DE84A8] italic font-bold">il momento</span>, <span className="text-[#DE84A8] italic font-bold">io sono qui</span>.&quot;
           </p>
           <h2 className="font-serif text-4xl md:text-6xl">
             Maria Gabriella Ansaldi

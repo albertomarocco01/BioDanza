@@ -12,7 +12,7 @@ export default function MetamedicinaPage() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
-                    className="font-serif text-5xl md:text-8xl text-accent-metamedicina mb-6 uppercase tracking-widest"
+                    className="font-serif text-5xl md:text-8xl text-[#8068C0] mb-6 uppercase tracking-widest"
                 >
                     Metamedicina
                 </motion.h1>
