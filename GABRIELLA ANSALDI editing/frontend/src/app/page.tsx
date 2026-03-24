@@ -106,6 +106,14 @@ export default function Home() {
       <section
         className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
+        {/* 🌸 FIORE SLIDE 2 */}
+        <img
+          src="/FioreSlide2.png"
+          alt="Fiore decorativo"
+          className="absolute top-[60%] md:top-[72%] md:-translate-y-1/2 left-[-5%] md:left-[-2%] lg:left-[0%] w-[300px] md:w-[340px] lg:w-[380px] pointer-events-none z-0"
+          style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.12)) drop-shadow(0 2px 8px rgba(0,0,0,0.08))" }}
+/>
+
         <motion.div
           variants={liquidVariant}
           initial="hidden"
@@ -130,6 +138,30 @@ export default function Home() {
         ref={ctaRef}
         className={`${SECTION_H} w-full flex flex-col items-center justify-end snap-start px-6 md:px-12 relative flex-shrink-0 pb-24`}
       >
+{/* 🌿 PETALI BLU — sinistra */}
+<motion.img
+  src="/PetaliBlu.png"
+  alt=""
+  initial={{ opacity: 0, x: -15, scale: 0.9 }}
+  whileInView={{ opacity: 0.85, x: 0, scale: 1 }}
+  viewport={{ once: false, amount: 0.4 }}
+  transition={{ duration: 1.6, delay: 0.2, ease: "easeOut" }}
+  className="absolute bottom-[4%] left-[-2%] md:left-[1%] lg:left-[3%] w-[280px] md:w-[360px] lg:w-[440px] pointer-events-none z-0"
+  style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.10))" }}
+/>
+
+        {/* 🌸 PETALI ROSA — destra */}
+        <motion.img
+          src="/PetaliRosa.png"
+          alt=""
+          initial={{ opacity: 0, x: 15, scale: 0.9 }}
+          whileInView={{ opacity: 0.85, x: 0, scale: 1 }}
+          viewport={{ once: false, amount: 0.4 }}
+          transition={{ duration: 1.6, delay: 0.4, ease: "easeOut" }}
+          className="absolute top-[15%] right-[-2%] md:right-[1%] lg:right-[3%] w-[220px] md:w-[280px] lg:w-[340px] pointer-events-none z-0"
+          style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.10))" }}
+        />
+
         <motion.div
           variants={liquidVariant}
           initial="hidden"
