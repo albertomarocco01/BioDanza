@@ -113,7 +113,7 @@ export default function Home() {
           viewport={{ once: false, amount: 0.5 }}
           className="flex flex-col items-center justify-center gap-6 text-center"
         >
-          <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl leading-relaxed italic">
+          <p className="font-cursive text-4xl md:text-6xl lg:text-7xl max-w-5xl italic" style={{ lineHeight: "1.25" }}>
             &quot;E se <span className="text-[#DE84A8] italic font-bold">il mio corpo</span> stesse cercando di dirmi qualcosa?&quot;
           </p>
           <div className="w-16 h-[1px] bg-[#4B5749]/20" />

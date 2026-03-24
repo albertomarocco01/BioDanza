@@ -45,7 +45,7 @@ export default function BiodanzaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 2 — COS'È LA BIODANZA
                 ══════════════════════════════════════════ */}
-            <section className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}>
+            <section className={`${SECTION_H} w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"
@@ -53,7 +53,7 @@ export default function BiodanzaPage() {
                     viewport={{ once: false, amount: 0.4 }}
                     className="flex flex-col items-center gap-8 text-center max-w-3xl"
                 >
-                    <h2 className="font-serif text-3xl md:text-5xl text-[#4B5749]">
+                    <h2 className="font-serif text-3xl md:text-5xl text-[#5B8BD0]">
                         Cos&apos;è la Biodanza?
                     </h2>
                     <div className="w-16 h-[1px] bg-[#4B5749]/20" />
@@ -72,7 +72,7 @@ export default function BiodanzaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 3 — IL VIAGGIO INTERIORE
                 ══════════════════════════════════════════ */}
-            <section className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0 pb-8`}>
+            <section className={`min-h-[80dvh] w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36 pb-24`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"
@@ -81,7 +81,7 @@ export default function BiodanzaPage() {
                     className="flex flex-col items-center gap-8 text-center max-w-3xl"
                 >
                     <p className="font-cursive text-4xl md:text-6xl italic text-[#5E2F00] leading-relaxed">
-                        &quot;Il corpo non mente. <span className="text-[#DE84A8] font-bold">Sa sempre</span> la via verso casa.&quot;
+                        &quot;Il corpo non mente. <span className="text-[#5B8BD0] font-bold">Sa sempre</span> la via verso casa.&quot;
                     </p>
                     <div className="w-16 h-[1px] bg-[#4B5749]/20" />
                     <p className="font-serif text-lg md:text-xl leading-relaxed text-[#4B5749]/90">

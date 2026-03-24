@@ -45,7 +45,7 @@ export default function MetamedicinaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 2 — OLTRE LA MEDICINA + ICONE
                 ══════════════════════════════════════════ */}
-            <section className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}>
+            <section className={`${SECTION_H} w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"
@@ -54,7 +54,7 @@ export default function MetamedicinaPage() {
                     className="flex flex-col items-center gap-10 text-center max-w-4xl w-full"
                 >
                     <div className="space-y-6">
-                        <h2 className="font-serif text-3xl md:text-5xl text-text-primary">Oltre la Medicina</h2>
+                        <h2 className="font-serif text-3xl md:text-5xl text-[#8068C0]">Oltre la Medicina</h2>
                         <p className="font-serif text-lg md:text-xl leading-relaxed text-text-primary/90">
                             La Metamedicina non è solo una tecnica, è un&apos;arte di guarigione che va oltre la semplice soppressione del sintomo. Significa &quot;andare oltre&quot; la medicina tradizionale per cercare la causa psicosomatica del malessere.
                         </p>
@@ -105,7 +105,7 @@ export default function MetamedicinaPage() {
                                 <div className="w-20 h-20 mx-auto flex items-center justify-center cursor-default">
                                     {item.svg}
                                 </div>
-                                <h4 className="font-serif text-xl text-text-primary">{item.title}</h4>
+                                <h4 className="font-serif text-xl text-[#8068C0]">{item.title}</h4>
                                 <p className="font-serif text-sm text-text-primary/70 max-w-[200px]">{item.desc}</p>
                             </div>
                         ))}
@@ -116,24 +116,28 @@ export default function MetamedicinaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 3 — CONSULENZE INDIVIDUALI
                 ══════════════════════════════════════════ */}
-            <section className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}>
+            <section className={`min-h-[80dvh] w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36 pb-24`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.4 }}
-                    className="p-12 border border-accent-metamedicina/30 bg-accent-metamedicina/5 backdrop-blur-sm rounded-sm text-center space-y-6 max-w-3xl w-full"
+                    className="flex flex-col items-center gap-8 text-center max-w-3xl w-full"
                 >
-                    <h3 className="font-serif text-2xl md:text-4xl text-accent-metamedicina">Consulenze Individuali</h3>
-                    <p className="font-serif text-lg max-w-2xl mx-auto">
+                    <h3 className="font-serif text-3xl md:text-5xl text-[#8068C0]">Consulenze Individuali</h3>
+                    <div className="w-16 h-[1px] bg-[#4B5749]/20" />
+                    <p className="font-serif text-lg md:text-xl leading-relaxed text-[#4B5749]/90 max-w-2xl">
                         Attraverso il dialogo e l&apos;ascolto empatico, ti accompagno nel decifrare i messaggi del tuo corpo per ritrovare l&apos;equilibrio e la serenità.
                     </p>
-                    <div className="pt-8">
-                        <p className="font-serif italic text-sm opacity-70">Per prenotare una consulenza:</p>
-                        <p className="font-serif text-xl mt-2">
-                            Visita la sezione <a href="/contatti" className="underline hover:text-accent-metamedicina transition-colors">Contatti</a>
-                        </p>
-                    </div>
+                    <p className="font-cursive text-3xl md:text-4xl italic text-[#5E2F00] leading-relaxed">
+                        &quot;Ogni sintomo è un invito a tornare a sé.&quot;
+                    </p>
+                    <a
+                        href="/contatti"
+                        className="px-10 py-4 border border-[#4B5749]/30 font-serif uppercase tracking-[0.2em] text-sm text-[#4B5749] hover:bg-[#4B5749] hover:text-[#FFF8E6] transition-all duration-300 rounded-full"
+                    >
+                        Prenota una consulenza
+                    </a>
                 </motion.div>
             </section>
 

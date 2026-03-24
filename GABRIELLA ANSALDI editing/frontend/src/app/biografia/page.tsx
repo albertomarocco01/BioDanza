@@ -51,7 +51,7 @@ const certifications = [
 
 export default function ChiSonoPage() {
     return (
-        <div className="max-w-5xl mx-auto px-8 pt-20 pb-24 min-h-screen">
+        <div className="max-w-5xl mx-auto px-8 pt-36 pb-24 min-h-screen">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
