@@ -7,6 +7,14 @@ import Link from "next/link";
 export default function PercorsiPage() {
     return (
         <div className="relative min-h-screen">
+            {/* 🌿 SFONDO IN SOTTOIMPRESSIONE — filigrana Percorsi */}
+            <img
+                src="/PercorsoSfondo.png"
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                style={{ opacity: 0.50, mixBlendMode: "luminosity", zIndex: 0, objectPosition: "center top", transform: "translateY(-6%)" }}
+            />
             <div className="max-w-6xl mx-auto px-8 pt-32 pb-24 min-h-screen relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -27,10 +35,10 @@ export default function PercorsiPage() {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="group flex flex-col items-center text-center p-8 md:p-12 bg-primary-dark/20 border border-text-primary/5 hover:border-accent-biodanza/30 transition-all duration-500"
+                        className="group flex flex-col items-center text-center p-8 md:p-12 bg-primary-dark/20 border border-text-primary/5 hover:border-accent-biodanza/30 hover:-translate-y-2 hover:shadow-lg transition-all duration-500"
                     >
                         {/* Icona collettività — cerchio rosa con tre persone */}
-                        <div className="w-20 h-20 rounded-full bg-[#DE84A8]/15 flex items-center justify-center mb-6">
+                        <div className="w-20 h-20 rounded-full bg-[#DE84A8]/15 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:bg-[#DE84A8]/30">
                             <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-11 h-11" aria-label="Gruppo">
                                 {/* persona sinistra */}
                                 <circle cx="10" cy="13" r="4" fill="#DE84A8" />
@@ -65,10 +73,10 @@ export default function PercorsiPage() {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="group flex flex-col items-center text-center p-8 md:p-12 bg-primary-dark/20 border border-text-primary/5 hover:border-accent-metamedicina/30 transition-all duration-500"
+                        className="group flex flex-col items-center text-center p-8 md:p-12 bg-primary-dark/20 border border-text-primary/5 hover:border-accent-metamedicina/30 hover:-translate-y-2 hover:shadow-lg transition-all duration-500"
                     >
                         {/* Icona individuale — cerchio blu con persona singola */}
-                        <div className="w-20 h-20 rounded-full bg-[#5B8BD0]/15 flex items-center justify-center mb-6">
+                        <div className="w-20 h-20 rounded-full bg-[#5B8BD0]/15 flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:bg-[#5B8BD0]/30">
                             <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-11 h-11" aria-label="Individuale">
                                 <circle cx="20" cy="13" r="6" fill="#5B8BD0" />
                                 <path d="M6 36c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#5B8BD0" strokeWidth="2.5" strokeLinecap="round" fill="none" />

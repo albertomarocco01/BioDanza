@@ -24,11 +24,20 @@ export default function BiodanzaPage() {
                 SEZIONE 1 — HERO
                 ══════════════════════════════════════════ */}
             <section className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start p-8 text-center relative z-10 overflow-hidden flex-shrink-0 pt-20`}>
+                {/* 🌿 SFONDO IN SOTTOIMPRESSIONE — filigrana Biodanza */}
+                <img
+                    src="/BiodanzaSfondo.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    style={{ opacity: 0.60, mixBlendMode: "luminosity", zIndex: 0, objectPosition: "110% center" }}
+                />
+
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
-                    className="font-serif text-5xl md:text-8xl text-[#5B8BD0] mb-6 uppercase tracking-widest"
+                    className="font-serif text-5xl md:text-8xl text-[#5B8BD0] mb-6 uppercase tracking-widest relative z-10"
                 >
                     Biodanza
                 </motion.h1>
@@ -36,7 +45,7 @@ export default function BiodanzaPage() {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 1 }}
-                    className="font-cursive text-2xl md:text-4xl text-text-secondary italic"
+                    className="font-cursive text-2xl md:text-4xl text-text-secondary italic relative z-10"
                 >
                     Lavoro di Gruppo — La Danza della Vita
                 </motion.p>

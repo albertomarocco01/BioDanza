@@ -107,12 +107,16 @@ export default function Home() {
         className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start px-6 md:px-12 relative flex-shrink-0`}
       >
         {/* 🌸 FIORE SLIDE 2 */}
-        <img
+        <motion.img
           src="/FioreSlide2.png"
           alt="Fiore decorativo"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 1.6, ease: "easeOut" }}
           className="absolute top-[60%] md:top-[72%] md:-translate-y-1/2 left-[-5%] md:left-[-2%] lg:left-[0%] w-[300px] md:w-[340px] lg:w-[380px] pointer-events-none z-0"
           style={{ filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.12)) drop-shadow(0 2px 8px rgba(0,0,0,0.08))" }}
-/>
+        />
 
         <motion.div
           variants={liquidVariant}
