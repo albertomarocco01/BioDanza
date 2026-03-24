@@ -23,7 +23,7 @@
        0.15 = quasi invisibile  ·  0.50 = medio  ·  1.00 = pieno
     ──────────────────────────────────────────────────────────── */
     --glass-rgb: 255, 248, 230;   /* colore base: #FFF8E6 (avorio) */
-    --glass-opacity: 0.60;        /* ← CAMBIA SOLO QUESTO VALUE    */
+    --glass-opacity: 0.95;        /* ← CAMBIA SOLO QUESTO VALUE    */
   }
 
   html {
