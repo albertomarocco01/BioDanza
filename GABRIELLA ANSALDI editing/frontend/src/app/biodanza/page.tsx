@@ -24,13 +24,13 @@ export default function BiodanzaPage() {
                 SEZIONE 1 — HERO
                 ══════════════════════════════════════════ */}
             <section className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start p-8 text-center relative z-10 overflow-hidden flex-shrink-0 pt-20`}>
-                {/* 🌿 SFONDO IN SOTTOIMPRESSIONE — filigrana Biodanza */}
+                {/* Sfondo hero — filigrana Biodanza */}
                 <img
-                    src="/BiodanzaSfondo.png"
+                    src="/BiodanzaNoLogo.png"
                     alt=""
                     aria-hidden="true"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                    style={{ opacity: 0.60, mixBlendMode: "luminosity", zIndex: 0, objectPosition: "110% center" }}
+                    style={{ opacity: 0.67, zIndex: 0, objectPosition: "center center" }}
                 />
 
                 <motion.h1
@@ -54,7 +54,7 @@ export default function BiodanzaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 2 — COS'È LA BIODANZA
                 ══════════════════════════════════════════ */}
-            <section className={`${SECTION_H} w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36`}>
+            <section className={`${SECTION_H} w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative z-10 flex-shrink-0 pt-36`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"
@@ -81,7 +81,7 @@ export default function BiodanzaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 3 — IL VIAGGIO INTERIORE
                 ══════════════════════════════════════════ */}
-            <section className={`min-h-[80dvh] w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36 pb-24`}>
+            <section className={`min-h-[80dvh] w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative z-10 flex-shrink-0 pt-36 pb-24`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"

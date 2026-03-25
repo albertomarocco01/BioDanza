@@ -7,15 +7,7 @@ import Link from "next/link";
 export default function PercorsiPage() {
     return (
         <div className="relative min-h-screen">
-            {/* 🌿 SFONDO IN SOTTOIMPRESSIONE — filigrana Percorsi */}
-            <img
-                src="/PercorsoSfondo.png"
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-                style={{ opacity: 0.50, mixBlendMode: "luminosity", zIndex: 0, objectPosition: "center top", transform: "translateY(-6%)" }}
-            />
-            <div className="max-w-6xl mx-auto px-8 pt-32 pb-24 min-h-screen relative z-10">
+<div className="max-w-6xl mx-auto px-8 pt-32 pb-24 min-h-screen relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}

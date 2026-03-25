@@ -24,13 +24,13 @@ export default function MetamedicinaPage() {
                 SEZIONE 1 — HERO (invariata)
                 ══════════════════════════════════════════ */}
             <section className={`${SECTION_H} w-full flex flex-col items-center justify-center snap-start p-8 text-center relative z-10 overflow-hidden flex-shrink-0 pt-20`}>
-                {/* 🌿 SFONDO IN SOTTOIMPRESSIONE — filigrana Metamedicina */}
+                {/* Sfondo hero — filigrana Metamedicina */}
                 <img
-                    src="/MetaSfondo.png"
+                    src="/MetaNoLogo.png"
                     alt=""
                     aria-hidden="true"
                     className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-                    style={{ opacity: 0.60, mixBlendMode: "luminosity", zIndex: 0, objectPosition: "90% center" }}
+                    style={{ opacity: 0.32, zIndex: 0, objectPosition: "center center" }}
                 />
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export default function MetamedicinaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 2 — OLTRE LA MEDICINA + ICONE
                 ══════════════════════════════════════════ */}
-            <section className={`${SECTION_H} w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36`}>
+            <section className={`${SECTION_H} w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative z-10 flex-shrink-0 pt-36`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"
@@ -124,7 +124,7 @@ export default function MetamedicinaPage() {
             {/* ══════════════════════════════════════════
                 SEZIONE 3 — CONSULENZE INDIVIDUALI
                 ══════════════════════════════════════════ */}
-            <section className={`min-h-[80dvh] w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative flex-shrink-0 pt-36 pb-24`}>
+            <section className={`min-h-[80dvh] w-full flex flex-col items-center justify-start snap-start px-6 md:px-12 relative z-10 flex-shrink-0 pt-36 pb-24`}>
                 <motion.div
                     variants={liquidVariant}
                     initial="hidden"

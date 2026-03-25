@@ -26,7 +26,7 @@ export default function PubblicazioniPage() {
                     className="w-full max-w-[300px] aspect-[2/3] relative drop-shadow-2xl mx-auto md:mx-0 flex-shrink-0"
                 >
                     <Image
-                        src="/LibroClean.png"
+                        src="/Libro.png"
                         alt="Meccanismi di azione della Biodanza — libro di Maria Gabriella Ansaldi"
                         fill
                         className="object-contain object-center"
